@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function People() {
+function Characters() {
 
     useEffect(() => {
         fetchPeople();
@@ -22,13 +22,11 @@ function People() {
 
     return(
         <div>
-            <div>
+            <div className='nav-menu'>
                 <Link style={linkStyle} to='/'>
-                    <h1>Home</h1>
+                    <h1>Home-</h1>
                 </Link>
-                <Link style={linkStyle} to='/people'>
-                    <h1>Character</h1>
-                </Link>
+                <h1>-Characters</h1>
             </div>
 
             <div>
@@ -42,4 +40,4 @@ function People() {
     )
 }
 
-export default People
+export default Characters

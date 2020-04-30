@@ -26,15 +26,11 @@ function Home() {
       name: "species"
     },
   ];
-  
-  const handleclick = id => {
-    console.log(id);
-  }
 
   return(
     <div>
       {category.map(item => 
-        <h2 key={item.id} onClick={() => handleclick(item.id)}>
+        <h2 key={item.id}>
           <Link style={linkStyle} to={`${item.id}`}>
               {item.name}
           </Link>
