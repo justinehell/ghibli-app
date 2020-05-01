@@ -43,7 +43,7 @@ function SpeciesDetail({ match }) {
                     <h1>-{speciesDetail.name}</h1>
             </div>
             <div>
-                <h1>{speciesDetail.name}</h1>
+                <h2>{speciesDetail.name}</h2>
                 <h3>Classification : {speciesDetail.classification}</h3>
                 <h3>Eye colors : {speciesDetail.eye_colors}</h3>
                 <h3>Hair colors : {speciesDetail.hair_colors}</h3>

@@ -1,24 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Pagination from './Pagination';
 
 function Films() {
+
+    const [films, setFilms] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [elementsPerPage] = useState(8);
+
+    const fetchFilms = async () => {
+        setLoading(true);
+        const data = await fetch('https://ghibliapi.herokuapp.com/films');
+        const filmsData = await data.json();
+        setFilms(filmsData);
+        setLoading(false);
+    }
 
     useEffect(() => {
         fetchFilms();
     }, []);
 
-    const [films, setFilms] = useState([]);
+    // Get current elements = films
+    const indexOfLastElement = currentPage * elementsPerPage;
+    const indexOfFirstElement = indexOfLastElement - elementsPerPage;
+    const currentElements = films.slice(indexOfFirstElement, indexOfLastElement);
 
-    const fetchFilms = async () => {
-        const data = await fetch('https://ghibliapi.herokuapp.com/films');
-        const filmsData = await data.json();
-        setFilms(filmsData);
-    }
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const linkStyle = {
         color: 'white',
         textDecoration: 'none'
     };
+
+    if (loading) {
+        return <h2>Loading...</h2>;
+    }
 
     return(
         <div>
@@ -28,8 +47,13 @@ function Films() {
                 </Link>
                 <h1>-Films</h1>
             </div>
+            <Pagination 
+                elementsPerPage={elementsPerPage} 
+                totalElements={films.length} 
+                paginate={paginate} 
+            />
             <div>
-                {films.map(film => (
+                {currentElements.map(film => (
                 <h4 key={film.id}>
                     <Link style={linkStyle} to={`/films/${film.id}`}>{film.title}</Link>
                 </h4>

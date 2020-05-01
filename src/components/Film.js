@@ -37,7 +37,7 @@ function Film({ match }) {
                     <h1>-{filmDetail.title}</h1>
             </div>
             <div>
-                <h1>{filmDetail.title}</h1>
+                <h2>{filmDetail.title}</h2>
                 <h3>Director : {filmDetail.director}</h3>
                 <h3>Producer : {filmDetail.producer}</h3>
                 <h3>Release date : {filmDetail.release_date}</h3>

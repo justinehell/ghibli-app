@@ -46,7 +46,7 @@ function Location({match}) {
                     <h1>-{locationDetail.name}</h1>
             </div>
             <div>
-                <h1>{locationDetail.name}</h1>
+                <h2>{locationDetail.name}</h2>
                 <h3>Climate : {locationDetail.climate}</h3>
                 <h3>Terrain : {locationDetail.terrain}</h3>
                 <h3>Surface water : {locationDetail.surface_water}</h3>

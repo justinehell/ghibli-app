@@ -1,24 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Pagination from './Pagination';
 
 function Species() {
+
+    const [species, setSpecies] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [elementsPerPage] = useState(8);
+
+    const fetchSpecies = async () => {
+        setLoading(true);
+        const data = await fetch('https://ghibliapi.herokuapp.com/species');
+        const speciesData = await data.json();
+        setSpecies(speciesData);
+        setLoading(false);
+    }
 
     useEffect(() => {
         fetchSpecies();
     }, []);
 
-    const [species, setSpecies] = useState([]);
+    // Get current elements = species
+    const indexOfLastElement = currentPage * elementsPerPage;
+    const indexOfFirstElement = indexOfLastElement - elementsPerPage;
+    const currentElements = species.slice(indexOfFirstElement, indexOfLastElement);
 
-    const fetchSpecies = async () => {
-        const data = await fetch('https://ghibliapi.herokuapp.com/species');
-        const speciesData = await data.json();
-        setSpecies(speciesData);
-    }
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const linkStyle = {
         color: 'white',
         textDecoration: 'none'
     };
+
+    if (loading) {
+        return <h2>Loading...</h2>;
+    }
 
     return(
         <div>
@@ -28,13 +47,18 @@ function Species() {
                 </Link>
                 <h1>-Species</h1>
             </div>
-        <div>
-            {species.map(item => (
-            <h4 key={item.id}>
-                <Link style={linkStyle} to={`/species/${item.id}`}>{item.name}</Link>
-            </h4>
-            ))}
-        </div>
+            <Pagination 
+                elementsPerPage={elementsPerPage} 
+                totalElements={species.length} 
+                paginate={paginate} 
+            />
+            <div>
+                {currentElements.map(item => (
+                <h4 key={item.id}>
+                    <Link style={linkStyle} to={`/species/${item.id}`}>{item.name}</Link>
+                </h4>
+                ))}
+            </div>
     </div>
     )
 }

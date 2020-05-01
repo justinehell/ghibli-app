@@ -1,24 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Pagination from './Pagination';
 
 function Locations() {
+
+    const [locations, setLocations] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [elementsPerPage] = useState(8);
+
+    const fetchLocations = async () => {
+        setLoading(true);
+        const data = await fetch('https://ghibliapi.herokuapp.com/locations');
+        const locationsData = await data.json();
+        setLocations(locationsData);
+        setLoading(false);
+    }
 
     useEffect(() => {
         fetchLocations();
     }, []);
 
-    const [locations, setLocations] = useState([]);
+    // Get current elements = locations
+    const indexOfLastElement = currentPage * elementsPerPage;
+    const indexOfFirstElement = indexOfLastElement - elementsPerPage;
+    const currentElements = locations.slice(indexOfFirstElement, indexOfLastElement);
 
-    const fetchLocations = async () => {
-        const data = await fetch('https://ghibliapi.herokuapp.com/locations');
-        const locationsData = await data.json();
-        setLocations(locationsData);
-    }
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);    
 
     const linkStyle = {
         color: 'white',
         textDecoration: 'none'
     };
+
+    if (loading) {
+        return <h2>Loading...</h2>;
+    }
 
     return(
         <div>
@@ -28,9 +47,13 @@ function Locations() {
                 </Link>
                 <h1>-Locations</h1>
             </div>
-
+            <Pagination 
+                elementsPerPage={elementsPerPage} 
+                totalElements={locations.length} 
+                paginate={paginate} 
+            />
             <div>
-                {locations.map(location => (
+                {currentElements.map(location => (
                 <h4 key={location.id}>
                     <Link style={linkStyle} to={`/locations/${location.id}`}>{location.name}</Link>
                 </h4>

@@ -32,7 +32,7 @@ function Character({ match }) {
                     <h1>-{characterDetail.name}</h1>
             </div>
             <div>
-                <h1>{characterDetail.name}</h1>
+                <h2>{characterDetail.name}</h2>
                 <h3>Gender : {characterDetail.gender}</h3>
                 <h3>Age : {characterDetail.age}</h3>
                 <h3>Eye color : {characterDetail.eye_color}</h3>
