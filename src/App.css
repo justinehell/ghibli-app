@@ -1,10 +1,7 @@
 .App {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: calc(100vh - 10vh);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -23,3 +20,95 @@ nav {
 .nav-menu {
   display: flex;
 }
+
+/* IMAGES STYLES & POSITION */
+
+.obj-fit-cover {
+  object-fit: cover;
+}
+
+.obj-pos-arr {
+  object-position: -10% 20%;
+}
+
+/* MARGIN & PADDING */
+
+.margin-auto {
+  margin: auto;
+}
+.m-50-50-50-0 {
+  margin: 50px 50px 50px 0px;
+}
+.pl-50 {
+  padding-left: 50px;
+}
+
+/* WIDTH & HEIGHT */
+
+.full-width {
+  width: 100%;
+}
+.width-80 {
+  width: 80%;
+}
+.half-width {
+  width: 50%;
+}
+.min-height-10vh {
+  min-height: 10vh;
+}
+.half-height {
+  height: 50%;
+}
+.h-250 {
+  height: 250px;
+}
+
+/* DISPLAY */
+
+.inline-block {
+  display: inline-block;
+}
+.flex {
+  display: flex;
+}
+
+/* COLOR & BACKGROUND COLOR */
+
+.white {
+  color: white;
+}
+
+.bg-color {
+  background-color: rgb(9, 12, 11);
+}
+
+/* POSITION */
+
+.sticky {
+  position: sticky;
+}
+.top-0 {
+  top: 0px;
+}
+.space-around {
+  justify-content: space-around;
+}
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* BORDER */
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+/* background-color: rgb(206, 206, 206); */
