@@ -38,7 +38,7 @@ function Home() {
           </div>
         </Link>
       </div>
-      <div className="bg-color text-center m-50-50-50-0 border-radius-15 overflow-hidden inline-block half-width half-height">
+      <div className="bg-color text-center m-50-0-50-0 border-radius-15 overflow-hidden inline-block half-width half-height">
         <Link style={linkStyle} to='/species'>
           <div>
           <img alt="category-people" className="full-width h-250 obj-fit-cover" src={SpeciesCategory}></img>

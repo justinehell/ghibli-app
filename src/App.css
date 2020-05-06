@@ -1,24 +1,27 @@
 .App {
-  background-color: #282c34;
-  min-height: calc(100vh - 10vh);
+  /* background-color: #282c34; couleur foncé*/
+  background-color: ivory;
+  min-height: calc(100vh - 154px);
   display: flex;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background: gray;
-  color: white;
   position: sticky;
   top: 0px;
 }
 
-.nav-menu {
-  display: flex;
+.help {
+  position: absolute;
+  left: 15%;
+  top: 4em;
+}
+
+button {
+  border: none;
+  background-color: ivory;
+  cursor: pointer;
 }
 
 /* IMAGES STYLES & POSITION */
@@ -26,7 +29,6 @@ nav {
 .obj-fit-cover {
   object-fit: cover;
 }
-
 .obj-pos-arr {
   object-position: -10% 20%;
 }
@@ -38,6 +40,10 @@ nav {
 }
 .m-50-50-50-0 {
   margin: 50px 50px 50px 0px;
+}
+
+.m-50-0-50-0 {
+  margin: 50px 0px 50px 0px;
 }
 .pl-50 {
   padding-left: 50px;
@@ -63,6 +69,9 @@ nav {
 .h-250 {
   height: 250px;
 }
+.h-150 {
+  height: 150px;
+}
 
 /* DISPLAY */
 
@@ -78,9 +87,19 @@ nav {
 .white {
   color: white;
 }
-
 .bg-color {
   background-color: rgb(9, 12, 11);
+}
+.bg-grey {
+  background: gray;
+}
+
+.bg-trans {
+  background-color: transparent;
+}
+
+.bg-ivory {
+  background-color: ivory;
 }
 
 /* POSITION */
@@ -97,12 +116,14 @@ nav {
 .align-center {
   align-items: center;
 }
-
 .text-center {
   text-align: center;
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.space-around {
+  justify-content: space-around;
 }
 
 /* BORDER */
