@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import Characters from './components/Characters';
 import Films from './components/Films';
@@ -29,6 +30,7 @@ function App() {
           <Route path='/species/:id' component={SpeciesDetail} />
         </Switch>
       </div>
+      <Footer />
     </Router>
 
   );

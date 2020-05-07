@@ -45,10 +45,8 @@ function Dialog( props) {
                 <hr />
                 <br></br>
                 <div style={{fontSize: "0.8em"}}>                
-                    Do you have trouble remembering names, but are great at remembering faces? Me too. That is why I created this web app. 
-                    Everything is click based, so if you are interested in seeing all the characters from the Studio Ghibli films, 
-                    click the characters category. After that, simply click on any picture to learn more about that character's physical 
-                    characteristics, related films, locations, species, etc.
+                    A React app developed using the Ghibli API to display basic information about Studio Ghibli characters, films, locations, species and their relations. 
+                    Everything is click based, so you can use it as a visual guide to help remember all the magical univers of Ghibli movies. I had fun building this app, it helped me practice and learn how react works.
                 </div>
                 <br></br>
                 <br></br>
