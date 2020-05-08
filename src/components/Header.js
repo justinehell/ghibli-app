@@ -13,7 +13,7 @@ function Header() {
     return(
         <nav className="min-height-10vh bg-ivory">
             <div className="help">
-                <button onClick={() => handleClickOpen()}><i class="fas fa-question-circle fa-2x"></i></button>
+                <button onClick={() => handleClickOpen()}><i className="fas fa-question-circle fa-2x"></i></button>
             </div>
             <div>
                 {isClicked ? <Dialog onClose={() => setIsClicked(false)} /> : ""}

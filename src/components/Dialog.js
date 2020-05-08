@@ -33,7 +33,8 @@ function Dialog( props) {
         padding: "10px",
         borderRadius: "2px",
         backgroundColor: "gray",
-        right: "0"
+        right: "0",
+        color: "white"
     }
 
     return(

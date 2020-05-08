@@ -7,7 +7,7 @@ function Footer() {
             <div className="h-100 text-center bg-ivory font-bold">
                 <div className="flex space-around pt-20 pb-20">
                     <div>
-                        FOLLOW ME : <a href="https://www.linkedin.com/in/justinehell/" target=" _blank"><i class="fab fa-linkedin"></i> Linkedin</a> - <a href="https://github.com/justinehell" target=" _blank"><i class="fab fa-github-square"></i> Github</a>
+                        FOLLOW ME : <a href="https://www.linkedin.com/in/justinehell/" target=" _blank"><i className="fab fa-linkedin"></i> Linkedin</a> - <a href="https://github.com/justinehell" target=" _blank"><i className="fab fa-github-square"></i> Github</a>
                     </div>
                     <div>
                         DESIGNED AND DEVELOPED BY <a href="https://justinehell.fr/" target=" _blank">JUSTINE HELL</a> ©2020, INSPIRED BY <a href="https://sarvey-webdev.com/" target=" _blank">TIM SARVEY</a>

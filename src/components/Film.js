@@ -15,11 +15,6 @@ function Film({ match }) {
         fetchFilm();
     }, [match.params.id]);
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
-
     let relatedSpecies = [];
     if (Array.isArray(filmDetail.species) && filmDetail.species.length) {
         relatedSpecies = filmDetail.species.map((url, index) => <RelatedSpecies key={index} urlSpecies={url} />);
@@ -28,10 +23,10 @@ function Film({ match }) {
     return(
         <div>
             <div className='nav-menu'>
-                <Link style={linkStyle} to='/'>
+                <Link to='/'>
                     <h1>Home-</h1>
                 </Link>
-                <Link style={linkStyle} to='/films'>
+                <Link to='/films'>
                     <h1>-Films-</h1>
                 </Link>
                     <h1>-{filmDetail.title}</h1>

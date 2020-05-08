@@ -15,13 +15,8 @@ const RelatedPeople = (props) => {
         fetchRelatedPeople();
     }, [props]);
 
-    const linkStyle = {
-    color: 'white',
-    textDecoration: 'none'
-    };
-
     return(
-    <Link style={linkStyle} to={`/people/${relatedPeople.id}`}>
+    <Link to={`/people/${relatedPeople.id}`}>
         <ul>
             <li>{relatedPeople.name}</li>
         </ul>

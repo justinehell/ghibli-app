@@ -14,13 +14,8 @@ const RelatedSpecies = (props) => {
         fetchRelatedSpecies();
     }, [props]);
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
-
     return(
-        <Link style={linkStyle} to={`/species/${relatedSpecies.id}`}>
+        <Link to={`/species/${relatedSpecies.id}`}>
             <ul>
                 <li>{relatedSpecies.name}</li>
             </ul>

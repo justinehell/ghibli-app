@@ -16,11 +16,6 @@ function Location({match}) {
         fetchLocation();
     }, [match.params.id]);
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
-
     let relatedPeople = [];
     if (Array.isArray(locationDetail.residents) && locationDetail.residents.length > 0) {
         relatedPeople = locationDetail.residents.map((url, index) => <RelatedPeople key={index} urlPeople={url} />);
@@ -37,10 +32,10 @@ function Location({match}) {
     return(
         <div>
             <div className='nav-menu'>
-                <Link style={linkStyle} to='/'>
+                <Link to='/'>
                     <h1>Home-</h1>
                 </Link>
-                <Link style={linkStyle} to='/locations'>
+                <Link to='/locations'>
                     <h1>-Locations-</h1>
                 </Link>
                     <h1>-{locationDetail.name}</h1>

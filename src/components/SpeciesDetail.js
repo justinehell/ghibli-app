@@ -16,11 +16,6 @@ function SpeciesDetail({ match }) {
         fetchSpeciesDetail();
     }, [match.params]);
 
-    const linkStyle = {
-            color: 'white',
-            textDecoration: 'none'
-    };
-
     let relatedPeople = [];
     if (Array.isArray(speciesDetail.people) && speciesDetail.people.length) {
         relatedPeople = speciesDetail.people.map((url, index) => <RelatedPeople key={index} urlPeople={url} />);
@@ -34,10 +29,10 @@ function SpeciesDetail({ match }) {
     return(
         <div>
             <div className='nav-menu'>
-                <Link style={linkStyle} to='/'>
+                <Link to='/'>
                     <h1>Home-</h1>
                 </Link>
-                <Link style={linkStyle} to='/species'>
+                <Link to='/species'>
                     <h1>-Species-</h1>
                 </Link>
                     <h1>-{speciesDetail.name}</h1>

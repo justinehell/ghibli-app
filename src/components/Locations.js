@@ -30,11 +30,6 @@ function Locations() {
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);    
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
-
     if (loading) {
         return <h2>Loading...</h2>;
     }
@@ -42,7 +37,7 @@ function Locations() {
     return(
         <div>
             <div className='nav-menu'>
-                <Link style={linkStyle} to='/'>
+                <Link to='/'>
                     <h1>Home-</h1>
                 </Link>
                 <h1>-Locations</h1>
@@ -55,7 +50,7 @@ function Locations() {
             <div>
                 {currentElements.map(location => (
                 <h4 key={location.id}>
-                    <Link style={linkStyle} to={`/locations/${location.id}`}>{location.name}</Link>
+                    <Link to={`/locations/${location.id}`}>{location.name}</Link>
                 </h4>
                 ))}
             </div>

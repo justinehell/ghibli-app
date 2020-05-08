@@ -30,11 +30,6 @@ function Species() {
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
-
     if (loading) {
         return <h2>Loading...</h2>;
     }
@@ -42,7 +37,7 @@ function Species() {
     return(
         <div>
             <div className='nav-menu'>
-                <Link style={linkStyle} to='/'>
+                <Link to='/'>
                     <h1>Home-</h1>
                 </Link>
                 <h1>-Species</h1>
@@ -55,7 +50,7 @@ function Species() {
             <div>
                 {currentElements.map(item => (
                 <h4 key={item.id}>
-                    <Link style={linkStyle} to={`/species/${item.id}`}>{item.name}</Link>
+                    <Link to={`/species/${item.id}`}>{item.name}</Link>
                 </h4>
                 ))}
             </div>

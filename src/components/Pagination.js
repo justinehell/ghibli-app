@@ -9,21 +9,25 @@ const Pagination = ({ elementsPerPage, totalElements, paginate }) => {
         pageNumbers.push(i);
     }
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
+    const styledPagination = {
+        marginRight: "1.2em",
+        backgroundColor: "black",
+        borderRadius: "15px",
+        padding: "12px",
+        border: "2px solid black",
+        fontWeight: "600"
+    }
 
     return (
-        <ul>
+        <div className="flex">
             {pageNumbers.map(number => (
-                <li key={number}>
-                    <Link style={linkStyle} onClick={() => paginate(number)}>
+                <button style={styledPagination} key={number}>
+                    <Link to='/people' onClick={() => paginate(number)}>
                     {number}
                     </Link>
-                </li>
+                </button>
             ))}
-        </ul>
+        </div>
     )
 }
 

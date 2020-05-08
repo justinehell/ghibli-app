@@ -15,18 +15,14 @@ function Character({ match }) {
         fetchCharacter();
     }, [match.params.id]);
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
 
     return(
         <div>
             <div className='nav-menu'>
-                <Link style={linkStyle} to='/'>
+                <Link to='/'>
                     <h1>Home-</h1>
                 </Link>
-                <Link style={linkStyle} to='/people'>
+                <Link to='/people'>
                     <h1>-Characters-</h1>
                 </Link>
                     <h1>-{characterDetail.name}</h1>

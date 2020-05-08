@@ -14,13 +14,8 @@ const RelatedFilms = (props) => {
         fetchRelatedFilms();
     }, [props]);
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
-
     return(
-        <Link style={linkStyle} to={`/films/${relatedFilms.id}`}>
+        <Link to={`/films/${relatedFilms.id}`}>
             <ul>
                 <li>{relatedFilms.title}</li>
             </ul>

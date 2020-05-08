@@ -2,13 +2,12 @@
   /* background-color: #282c34; couleur foncé*/
   background-color: ivory;
   min-height: calc(100vh - 254px);
-  display: flex;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* display: flex; */
+  /* font-size: calc(10px + 2vmin); */
+  color: black;
 }
 
 nav {
-  position: sticky;
   top: 0px;
 }
 
@@ -43,11 +42,11 @@ a {
 .margin-auto {
   margin: auto;
 }
-.m-50-50-50-0 {
-  margin: 50px 50px 50px 0px;
+.m-150-50-50-0 {
+  margin: 150px 50px 50px 0px;
 }
-.m-50-0-50-0 {
-  margin: 50px 0px 50px 0px;
+.m-150-0-50-0 {
+  margin: 150px 0px 50px 0px;
 }
 .pl-50 {
   padding-left: 50px;
@@ -142,12 +141,19 @@ a {
 .space-around {
   justify-content: space-around;
 }
+.space-between {
+  justify-content: space-between;
+}
 .align-center {
   align-items: center;
 }
 .text-center {
   text-align: center;
 }
+.items-center {
+  align-items: center;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -168,6 +174,12 @@ a {
 }
 .font-small {
   font-size: small;
+}
+.font-20 {
+  font-size: 20px;
+}
+.font-30 {
+  font-size: 30px;
 }
 
 /* background-color: rgb(206, 206, 206); */

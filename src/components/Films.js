@@ -30,11 +30,6 @@ function Films() {
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
-
     if (loading) {
         return <h2>Loading...</h2>;
     }
@@ -42,7 +37,7 @@ function Films() {
     return(
         <div>
             <div className='nav-menu'>
-                <Link style={linkStyle} to='/'>
+                <Link to='/'>
                     <h1>Home-</h1>
                 </Link>
                 <h1>-Films</h1>
@@ -55,7 +50,7 @@ function Films() {
             <div>
                 {currentElements.map(film => (
                 <h4 key={film.id}>
-                    <Link style={linkStyle} to={`/films/${film.id}`}>{film.title}</Link>
+                    <Link to={`/films/${film.id}`}>{film.title}</Link>
                 </h4>
                 ))}
             </div>

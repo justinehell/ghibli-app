@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
+import imgData from './../data/imgData';
 
 function Characters() {
 
@@ -30,33 +31,61 @@ function Characters() {
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    const linkStyle = {
-        color: 'white',
-        textDecoration: 'none'
-    };
-
     if (loading) {
         return <h2>Loading...</h2>;
     }
 
+    const styledContainer = {
+        // backgroundColor: "black",
+        display: "flex",
+        textAlign: "center",
+        flexWrap: "wrap",
+        marginRight: "10%",
+        marginLeft: "10%",
+        justifyContent: "center",
+        paddingTop: "50px",
+    }
+
+    const styledDiv = {
+        width: "20%",
+        padding: "25px",
+    }
+
+    const styledImg = {
+        width: "100%",
+        height: "350px",
+        objectFit: "cover",
+        borderTopLeftRadius: "15px",
+        borderTopRightRadius: "15px",
+        paddingBottom: "10px"
+    }
+
     return(
-        <div>
-            <div className='nav-menu'>
-                <Link style={linkStyle} to='/'>
-                    <h1>Home-</h1>
-                </Link>
-                <h1>-Characters</h1>
+        <div className=''>
+            <div className='margin-auto width-80 flex space-between items-center'>
+                <div className='flex space-around'>
+                    <Link  to='/'>
+                        <h1>Home</h1>
+                    </Link>
+                    <h1>&nbsp;/&nbsp;</h1>
+                    <h1>Characters</h1>
+                </div>
+                <Pagination 
+                    elementsPerPage={elementsPerPage} 
+                    totalElements={characters.length} 
+                    paginate={paginate} 
+                />
             </div>
-            <Pagination 
-                elementsPerPage={elementsPerPage} 
-                totalElements={characters.length} 
-                paginate={paginate} 
-            />
-            <div>
+            <div style={styledContainer}>
                 {currentElements.map(character => (
-                <h4 key={character.id}>
-                    <Link style={linkStyle} to={`/people/${character.id}`} >{character.name}</Link>
-                </h4>
+                    <div style={styledDiv} key={character.id}>
+                        <Link to={`/people/${character.id}`}>
+                            <div style={{backgroundColor: "black", borderRadius: "15px", paddingBottom: "15px"}}>
+                                <img style={styledImg} src={imgData.filter(item => item.id === character.id)[0].src} alt="characterImg"></img>
+                                <span>{character.name}</span>
+                            </div>
+                        </Link>
+                    </div>
                 ))}
             </div>
         </div>
