@@ -15,17 +15,18 @@ const Pagination = ({ elementsPerPage, totalElements, paginate }) => {
         borderRadius: "15px",
         padding: "12px",
         border: "2px solid black",
-        fontWeight: "600"
+        fontWeight: "600",
+        color: "ivory"
     }
 
     return (
         <div className="flex">
             {pageNumbers.map(number => (
-                <button style={styledPagination} key={number}>
-                    <Link to='/people' onClick={() => paginate(number)}>
+                <Link to='/people' onClick={() => paginate(number)} key={number}>
+                    <button style={styledPagination}>
                     {number}
-                    </Link>
-                </button>
+                    </button>
+                </Link>
             ))}
         </div>
     )

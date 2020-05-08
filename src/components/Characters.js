@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
 import imgData from './../data/imgData';
+import PageContainer from './../styledComponents/PageContainer';
+import ElementPerPage from './../styledComponents/ElementPerPage';
+import CardStyle from './../styledComponents/CardStyle';
+import CardImageStyle from './../styledComponents/CardImageStyle';
 
 function Characters() {
 
@@ -35,30 +39,35 @@ function Characters() {
         return <h2>Loading...</h2>;
     }
 
-    const styledContainer = {
-        // backgroundColor: "black",
-        display: "flex",
-        textAlign: "center",
-        flexWrap: "wrap",
-        marginRight: "10%",
-        marginLeft: "10%",
-        justifyContent: "center",
-        paddingTop: "50px",
-    }
+    // const PageContainer = {
+    //     display: "flex",
+    //     textAlign: "center",
+    //     flexWrap: "wrap",
+    //     marginRight: "10%",
+    //     marginLeft: "10%",
+    //     justifyContent: "center",
+    //     paddingTop: "50px",
+    // }
 
-    const styledDiv = {
-        width: "20%",
-        padding: "25px",
-    }
+    // const ElementPerPage = {
+    //     width: "20%",
+    //     padding: "25px",
+    // }
 
-    const styledImg = {
-        width: "100%",
-        height: "350px",
-        objectFit: "cover",
-        borderTopLeftRadius: "15px",
-        borderTopRightRadius: "15px",
-        paddingBottom: "10px"
-    }
+    // const CardStyle = {
+    //     backgroundColor: "black", 
+    //     borderRadius: "15px", 
+    //     paddingBottom: "15px"
+    // }
+
+    // const CardImageStyle = {
+    //     width: "100%",
+    //     height: "350px",
+    //     objectFit: "cover",
+    //     borderTopLeftRadius: "15px",
+    //     borderTopRightRadius: "15px",
+    //     paddingBottom: "10px"
+    // }
 
     return(
         <div className=''>
@@ -76,18 +85,18 @@ function Characters() {
                     paginate={paginate} 
                 />
             </div>
-            <div style={styledContainer}>
+            <PageContainer>
                 {currentElements.map(character => (
-                    <div style={styledDiv} key={character.id}>
+                    <ElementPerPage key={character.id}>
                         <Link to={`/people/${character.id}`}>
-                            <div style={{backgroundColor: "black", borderRadius: "15px", paddingBottom: "15px"}}>
-                                <img style={styledImg} src={imgData.filter(item => item.id === character.id)[0].src} alt="characterImg"></img>
+                            <CardStyle>
+                                <CardImageStyle src={imgData.filter(item => item.id === character.id)[0].src} alt="characterImg"></CardImageStyle>
                                 <span>{character.name}</span>
-                            </div>
+                            </CardStyle>
                         </Link>
-                    </div>
+                    </ElementPerPage>
                 ))}
-            </div>
+            </PageContainer>
         </div>
     )
 }
