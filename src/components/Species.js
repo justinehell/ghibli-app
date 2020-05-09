@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
+import imgDataSpecies from './../data/imgDataSpecies';
+import PageContainer from './../styledComponents/PageContainer';
+import ElementPerPage from './../styledComponents/ElementPerPage';
+import CardStyle from './../styledComponents/CardStyle';
+import CardImageStyle from './../styledComponents/CardImageStyle';
 
 function Species() {
 
@@ -35,26 +40,34 @@ function Species() {
     }
 
     return(
-        <div>
-            <div className='nav-menu'>
-                <Link to='/'>
-                    <h1>Home-</h1>
-                </Link>
-                <h1>-Species</h1>
+        <div className=''>
+            <div className='margin-auto width-80 flex space-between items-center'>
+                <div className='flex space-around'>
+                    <Link  to='/'>
+                        <h1>Home</h1>
+                    </Link>
+                    <h1>&nbsp;/&nbsp;</h1>
+                    <h1>Species</h1>
+                </div>
+                <Pagination 
+                    elementsPerPage={elementsPerPage} 
+                    totalElements={species.length} 
+                    paginate={paginate} 
+                />
             </div>
-            <Pagination 
-                elementsPerPage={elementsPerPage} 
-                totalElements={species.length} 
-                paginate={paginate} 
-            />
-            <div>
-                {currentElements.map(item => (
-                <h4 key={item.id}>
-                    <Link to={`/species/${item.id}`}>{item.name}</Link>
-                </h4>
+            <PageContainer>
+                {currentElements.map(eachSpecies => (
+                    <ElementPerPage key={eachSpecies.id}>
+                        <Link to={`/species/${eachSpecies.id}`}>
+                            <CardStyle>
+                                <CardImageStyle src={imgDataSpecies.filter(item => item.id === eachSpecies.id)[0].src} alt="speciesImg"></CardImageStyle>
+                                <span>{eachSpecies.name}</span>
+                            </CardStyle>
+                        </Link>
+                    </ElementPerPage>
                 ))}
-            </div>
-    </div>
+            </PageContainer>
+        </div>
     )
 }
 

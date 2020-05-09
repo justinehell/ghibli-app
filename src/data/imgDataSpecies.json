@@ -1,0 +1,38 @@
+[
+  {
+    "id": "af3910a6-429f-4c74-9ad5-dfe1c4aa04f2",
+    "name": "Human",
+    "src": "./../images/species/human.jpg",
+    "url": "https://ghibliapi.herokuapp.com/species/af3910a6-429f-4c74-9ad5-dfe1c4aa04f2"
+  },
+  {
+    "id": "6bc92fdd-b0f4-4286-ad71-1f99fb4a0d1e",
+    "name": "Deer",
+    "src": "./../images/species/deer.png",
+    "url": "https://ghibliapi.herokuapp.com/species/6bc92fdd-b0f4-4286-ad71-1f99fb4a0d1e"
+  },
+  {
+    "id": "b5a92d0e-5fb4-43d4-ba60-c012135958e4",
+    "name": "Spirit",
+    "src": "./../images/species/spirit.png",
+    "url": "htps://ghibliapi.herokuapp.com/species/b5a92d0e-5fb4-43d4-ba60-c012135958e4"
+  },
+  {
+    "id": "f25fa661-3073-414d-968a-ab062e3065f7",
+    "name": "God",
+    "src": "./../images/species/god.jpg",
+    "url": "https://ghibliapi.herokuapp.com/species/f25fa661-3073-414d-968a-ab062e3065f7"
+  },
+  {
+    "id": "603428ba-8a86-4b0b-a9f1-65df6abef3d3",
+    "name": "Cat",
+    "src": "./../images/species/cat.jpg",
+    "url": "https://ghibliapi.herokuapp.com/species/603428ba-8a86-4b0b-a9f1-65df6abef3d3"
+  },
+  {
+    "id": "74b7f547-1577-4430-806c-c358c8b6bcf5",
+    "name": "Totoro",
+    "src": "./../images/species/Totoro.jpg",
+    "url": "https://ghibliapi.herokuapp.com/species/74b7f547-1577-4430-806c-c358c8b6bcf5"
+  }
+]

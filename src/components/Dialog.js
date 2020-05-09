@@ -56,7 +56,7 @@ function Dialog( props) {
                 <hr />
                 <br></br>
                 <div style={{fontSize: "0.8em"}}>
-                    This app utilizes the Ghibli API (at <a href=" https://ghibliapi.herokuapp.com" target="_blank">ghibliapi</a>), so the unkown information displayed in this app will be updated as the API is updated. 
+                    This app utilizes the Ghibli API (at <a href=" https://ghibliapi.herokuapp.com" target="_blank">ghibliapi</a>), so the unkown information displayed as "TODO" in this app will be updated as the API is updated. 
                     As for the pictures, they were freely collected from Ghibli Wiki. Studio Ghibli and all associated names and/or images are copyright Studio Ghibli.
                 </div>
                 <br></br>

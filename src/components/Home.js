@@ -18,7 +18,7 @@ function Home() {
         <Link style={linkStyle} to='/people'>
           <div className="bg-blue pb-15">
             <img alt="category-people" className="pb-10 full-width h-250 obj-fit-cover" src={PeopleCategory}></img>
-            <span>People</span>
+            <span>Characters</span>
           </div>
         </Link>
       </div>
