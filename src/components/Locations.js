@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
+import imgDataLocations from './../data/imgDataLocations';
+import PageContainer from './../styledComponents/PageContainer';
+import ElementPerPage from './../styledComponents/ElementPerPage';
+import CardStyle from './../styledComponents/CardStyle';
+import CardImageStyle from './../styledComponents/CardImageStyle';
 
 function Locations() {
 
@@ -35,25 +40,33 @@ function Locations() {
     }
 
     return(
-        <div>
-            <div className='nav-menu'>
-                <Link to='/'>
-                    <h1>Home-</h1>
-                </Link>
-                <h1>-Locations</h1>
+        <div className=''>
+            <div className='margin-auto width-80 flex space-between items-center'>
+                <div className='flex space-around'>
+                    <Link  to='/'>
+                        <h1>Home</h1>
+                    </Link>
+                    <h1>&nbsp;/&nbsp;</h1>
+                    <h1>Locations</h1>
+                </div>
+                <Pagination 
+                    elementsPerPage={elementsPerPage} 
+                    totalElements={locations.length} 
+                    paginate={paginate} 
+                />
             </div>
-            <Pagination 
-                elementsPerPage={elementsPerPage} 
-                totalElements={locations.length} 
-                paginate={paginate} 
-            />
-            <div>
+            <PageContainer>
                 {currentElements.map(location => (
-                <h4 key={location.id}>
-                    <Link to={`/locations/${location.id}`}>{location.name}</Link>
-                </h4>
+                    <ElementPerPage key={location.id}>
+                        <Link to={`/locations/${location.id}`}>
+                            <CardStyle>
+                                <CardImageStyle src={imgDataLocations.filter(item => item.id === location.id)[0].src} alt="locationImg"></CardImageStyle>
+                                <span>{location.name}</span>
+                            </CardStyle>
+                        </Link>
+                    </ElementPerPage>
                 ))}
-            </div>
+            </PageContainer>
         </div>
     )
 }

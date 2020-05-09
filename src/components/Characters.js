@@ -39,36 +39,6 @@ function Characters() {
         return <h2>Loading...</h2>;
     }
 
-    // const PageContainer = {
-    //     display: "flex",
-    //     textAlign: "center",
-    //     flexWrap: "wrap",
-    //     marginRight: "10%",
-    //     marginLeft: "10%",
-    //     justifyContent: "center",
-    //     paddingTop: "50px",
-    // }
-
-    // const ElementPerPage = {
-    //     width: "20%",
-    //     padding: "25px",
-    // }
-
-    // const CardStyle = {
-    //     backgroundColor: "black", 
-    //     borderRadius: "15px", 
-    //     paddingBottom: "15px"
-    // }
-
-    // const CardImageStyle = {
-    //     width: "100%",
-    //     height: "350px",
-    //     objectFit: "cover",
-    //     borderTopLeftRadius: "15px",
-    //     borderTopRightRadius: "15px",
-    //     paddingBottom: "10px"
-    // }
-
     return(
         <div className=''>
             <div className='margin-auto width-80 flex space-between items-center'>
