@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
+import imgDataFilms from './../data/imgDataFilms';
+import PageContainer from './../styledComponents/PageContainer';
+import ElementPerPage from './../styledComponents/ElementPerPage';
+import CardStyle from './../styledComponents/CardStyle';
+import CardImageStyle from './../styledComponents/CardImageStyle';
+
 
 function Films() {
 
@@ -35,25 +41,33 @@ function Films() {
     }
 
     return(
-        <div>
-            <div className='nav-menu'>
-                <Link to='/'>
-                    <h1>Home-</h1>
-                </Link>
-                <h1>-Films</h1>
+        <div className=''>
+            <div className='margin-auto width-80 flex space-between items-center'>
+                <div className='flex space-around'>
+                    <Link  to='/'>
+                        <h1>Home</h1>
+                    </Link>
+                    <h1>&nbsp;/&nbsp;</h1>
+                    <h1>Films</h1>
+                </div>
+                <Pagination 
+                    elementsPerPage={elementsPerPage} 
+                    totalElements={films.length} 
+                    paginate={paginate} 
+                />
             </div>
-            <Pagination 
-                elementsPerPage={elementsPerPage} 
-                totalElements={films.length} 
-                paginate={paginate} 
-            />
-            <div>
+            <PageContainer>
                 {currentElements.map(film => (
-                <h4 key={film.id}>
-                    <Link to={`/films/${film.id}`}>{film.title}</Link>
-                </h4>
+                    <ElementPerPage key={film.id}>
+                        <Link to={`/films/${film.id}`}>
+                            <CardStyle>
+                                <CardImageStyle src={imgDataFilms.filter(item => item.id === film.id)[0].src} alt="filmImg"></CardImageStyle>
+                                <span>{film.title}</span>
+                            </CardStyle>
+                        </Link>
+                    </ElementPerPage>
                 ))}
-            </div>
+            </PageContainer>
         </div>
     )
 }

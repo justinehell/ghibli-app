@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
-import imgData from './../data/imgData';
+import imgDataCharacters from './../data/imgDataCharacters';
 import PageContainer from './../styledComponents/PageContainer';
 import ElementPerPage from './../styledComponents/ElementPerPage';
 import CardStyle from './../styledComponents/CardStyle';
@@ -90,7 +90,7 @@ function Characters() {
                     <ElementPerPage key={character.id}>
                         <Link to={`/people/${character.id}`}>
                             <CardStyle>
-                                <CardImageStyle src={imgData.filter(item => item.id === character.id)[0].src} alt="characterImg"></CardImageStyle>
+                                <CardImageStyle src={imgDataCharacters.filter(item => item.id === character.id)[0].src} alt="characterImg"></CardImageStyle>
                                 <span>{character.name}</span>
                             </CardStyle>
                         </Link>

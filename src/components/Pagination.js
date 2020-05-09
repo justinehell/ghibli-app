@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Pagination = ({ elementsPerPage, totalElements, paginate }) => {
     const pageNumbers = [];
@@ -22,11 +22,11 @@ const Pagination = ({ elementsPerPage, totalElements, paginate }) => {
     return (
         <div className="flex">
             {pageNumbers.map(number => (
-                <Link to='/people' onClick={() => paginate(number)} key={number}>
-                    <button style={styledPagination}>
+                // <Link to='/' onClick={() => paginate(number)} key={number}>
+                    <button onClick={() => paginate(number)} key={number} style={styledPagination}>
                     {number}
                     </button>
-                </Link>
+                /* </Link> */
             ))}
         </div>
     )
