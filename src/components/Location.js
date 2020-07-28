@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RelatedFilms from "./RelatedFilms";
 import RelatedPeople from "./RelatedPeople";
+import imgDataLocations from "./../data/imgDataLocations";
 
 function Location({ match }) {
   const [locationDetail, setLocationDetail] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchLocation = async () => {
@@ -13,6 +15,7 @@ function Location({ match }) {
       );
       const data = await fetchLocation.json();
       setLocationDetail(data);
+      setLoading(false);
     };
     fetchLocation();
   }, [match.params.id]);
@@ -34,6 +37,9 @@ function Location({ match }) {
     ));
   }
 
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
   // TODO : Handle "No Related Resident" case //
 
   return (
@@ -51,12 +57,23 @@ function Location({ match }) {
           <h1>{locationDetail.name}</h1>
         </div>
       </div>
+
       <div>
-        <h2>{locationDetail.name}</h2>
-        <h3>Climate : {locationDetail.climate}</h3>
-        <h3>Terrain : {locationDetail.terrain}</h3>
-        <h3>Surface water : {locationDetail.surface_water}</h3>
+        <img
+          src={
+            imgDataLocations.filter((item) => item.id === locationDetail.id)[0]
+              .src
+          }
+          alt="locationImg"
+        />
+        <div>
+          <h2>{locationDetail.name}</h2>
+          <h3>Climate : {locationDetail.climate}</h3>
+          <h3>Terrain : {locationDetail.terrain}</h3>
+          <h3>Surface water : {locationDetail.surface_water}</h3>
+        </div>
       </div>
+
       <div>
         <h3>Related Residents : {relatedPeople}</h3>
       </div>

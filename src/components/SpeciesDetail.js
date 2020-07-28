@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RelatedFilms from "./RelatedFilms";
 import RelatedPeople from "./RelatedPeople";
+import imgDataSpecies from "./../data/imgDataSpecies";
 
 function SpeciesDetail({ match }) {
   const [speciesDetail, setSpeciesDetail] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSpeciesDetail = async () => {
@@ -13,6 +15,7 @@ function SpeciesDetail({ match }) {
       );
       const data = await fetchSpeciesDetail.json();
       setSpeciesDetail(data);
+      setLoading(false);
     };
     fetchSpeciesDetail();
   }, [match.params]);
@@ -31,6 +34,14 @@ function SpeciesDetail({ match }) {
     ));
   }
 
+  let test = imgDataSpecies.filter((item) => item.id === speciesDetail.id);
+  console.log("speciesDetail.id", speciesDetail.id);
+  console.log("test", test);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+
   return (
     <div>
       <div className="margin-auto width-80 flex space-between items-center">
@@ -46,12 +57,22 @@ function SpeciesDetail({ match }) {
           <h1>{speciesDetail.name}</h1>
         </div>
       </div>
-      <div>
-        <h2>{speciesDetail.name}</h2>
-        <h3>Classification : {speciesDetail.classification}</h3>
-        <h3>Eye colors : {speciesDetail.eye_colors}</h3>
-        <h3>Hair colors : {speciesDetail.hair_colors}</h3>
+
+      <div style={{ backgroundColor: "blue" }}>
+        <img
+          src={
+            imgDataSpecies.filter((item) => item.id === speciesDetail.id)[0].src
+          }
+          alt="speciesImg"
+        />
+        <div style={{ backgroundColor: "pink", width: "450px" }}>
+          <h2>{speciesDetail.name}</h2>
+          <h3>Classification : {speciesDetail.classification}</h3>
+          <h3>Eye colors : {speciesDetail.eye_colors}</h3>
+          <h3>Hair colors : {speciesDetail.hair_colors}</h3>
+        </div>
       </div>
+
       <div>
         <h3>Related Characters : {relatedPeople}</h3>
       </div>

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RelatedSpecies from "./RelatedSpecies";
+import imgDataCharacters from "./../data/imgDataCharacters";
 
 function Character({ match }) {
   const [characterDetail, setCharacterDetail] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -12,9 +14,14 @@ function Character({ match }) {
       );
       const detail = await fetchCharacter.json();
       setCharacterDetail(detail);
+      setLoading(false);
     };
     fetchCharacter();
   }, [match.params.id]);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <div>
@@ -31,13 +38,25 @@ function Character({ match }) {
           <h1>{characterDetail.name}</h1>
         </div>
       </div>
+
       <div>
-        <h2>{characterDetail.name}</h2>
-        <h3>Gender : {characterDetail.gender}</h3>
-        <h3>Age : {characterDetail.age}</h3>
-        <h3>Eye color : {characterDetail.eye_color}</h3>
-        <h3>Hair color : {characterDetail.hair_color}</h3>
+        <img
+          src={
+            imgDataCharacters.filter(
+              (item) => item.id === characterDetail.id
+            )[0].src
+          }
+          alt="characterImg"
+        />
+        <div>
+          <h2>{characterDetail.name}</h2>
+          <h3>Gender : {characterDetail.gender}</h3>
+          <h3>Age : {characterDetail.age}</h3>
+          <h3>Eye color : {characterDetail.eye_color}</h3>
+          <h3>Hair color : {characterDetail.hair_color}</h3>
+        </div>
       </div>
+
       <div>
         <h3>
           Species : <RelatedSpecies urlSpecies={characterDetail.species} />
