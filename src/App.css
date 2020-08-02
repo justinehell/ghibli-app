@@ -51,8 +51,14 @@ a {
 .pl-50 {
   padding-left: 50px;
 }
+.pl-24 {
+  padding-left: 24px;
+}
 .pt-20 {
   padding-top: 20px;
+}
+.pt-15 {
+  padding-top: 15px;
 }
 .pb-20 {
   padding-bottom: 20px;

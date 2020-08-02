@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import imgDataSpecies from "./../data/imgDataSpecies";
-import PageContainer from "./../styledComponents/PageContainer";
-import ElementPerPage from "./../styledComponents/ElementPerPage";
-import CardStyle from "./../styledComponents/CardStyle";
-import CardImageStyle from "./../styledComponents/CardImageStyle";
+import PageContainer from "./../styledComponents/ListOfCharacters/PageContainer";
+import ElementPerPage from "./../styledComponents/ListOfCharacters/ElementPerPage";
+import CardStyle from "./../styledComponents/ListOfCharacters/CardStyle";
+import CardImageStyle from "./../styledComponents/ListOfCharacters/CardImageStyle";
 
 function Species() {
   const [species, setSpecies] = useState([]);
