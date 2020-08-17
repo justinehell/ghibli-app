@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RelatedSpecies from "./RelatedSpecies";
 import imgDataFilms from "./../data/imgDataFilms";
+import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPageContainer";
+import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
+import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
+import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
 
 function Film({ match }) {
-  const [filmDetail, setFilmDetail] = useState({});
+  const [filmDetail, setFilmDetail] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,7 +24,7 @@ function Film({ match }) {
   }, [match.params.id]);
 
   let relatedSpecies = [];
-  if (Array.isArray(filmDetail.species) && filmDetail.species.length) {
+  if (filmDetail !== null) {
     relatedSpecies = filmDetail.species.map((url, index) => (
       <RelatedSpecies key={index} urlSpecies={url} />
     ));
@@ -46,25 +50,38 @@ function Film({ match }) {
         </div>
       </div>
 
-      <div>
-        <img
+      <DetailedPageContainer>
+        <DetailedPageImg
           src={imgDataFilms.filter((item) => item.id === filmDetail.id)[0].src}
           alt="speciesImg"
         />
-        <div>
+        <div className="p-15-15-15-50">
           <h2>{filmDetail.title}</h2>
           <h3>Director : {filmDetail.director}</h3>
           <h3>Producer : {filmDetail.producer}</h3>
           <h3>Release date : {filmDetail.release_date}</h3>
-          <h3>Description : {filmDetail.description}</h3>
-          <h3>Related Characters : n/a</h3>
-          <h3>Related Locations : n/a</h3>
+          <h3>
+            Description : <br />
+            <br />
+            {filmDetail.description}
+          </h3>
         </div>
-      </div>
+      </DetailedPageContainer>
 
-      <div>
-        <h3>Related Species : {relatedSpecies}</h3>
-      </div>
+      <DetailedPageRelatedContainer>
+        <DetailedPageRelated>
+          <h2>Related Species</h2>
+          <div style={{ display: "flex" }}>{relatedSpecies}</div>
+        </DetailedPageRelated>
+        <DetailedPageRelated>
+          <h2>Related Characters</h2>
+          <div style={{ display: "flex" }}>n/a</div>
+        </DetailedPageRelated>
+        <DetailedPageRelated>
+          <h2>Related Locations</h2>
+          <div style={{ display: "flex" }}>n/a</div>
+        </DetailedPageRelated>
+      </DetailedPageRelatedContainer>
     </div>
   );
 }

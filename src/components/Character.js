@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RelatedSpecies from "./RelatedSpecies";
+import RelatedFilms from "./RelatedFilms";
 import imgDataCharacters from "./../data/imgDataCharacters";
+import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPageContainer";
+import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
+import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
+import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
 
 function Character({ match }) {
-  const [characterDetail, setCharacterDetail] = useState({});
+  const [characterDetail, setCharacterDetail] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,6 +24,13 @@ function Character({ match }) {
     fetchCharacter();
   }, [match.params.id]);
 
+  let relatedFilms = [];
+  if (characterDetail !== null) {
+    relatedFilms = characterDetail.films.map((url, index) => (
+      <RelatedFilms key={index} urlFilm={url} />
+    ));
+  }
+
   if (loading) {
     return <h2>Loading...</h2>;
   }
@@ -26,7 +38,7 @@ function Character({ match }) {
   return (
     <div>
       <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around">
+        <div className="flex space-around letter-spacing-2">
           <Link to="/">
             <h1>Home</h1>
           </Link>
@@ -39,29 +51,34 @@ function Character({ match }) {
         </div>
       </div>
 
-      <div>
-        <img
+      <DetailedPageContainer>
+        <DetailedPageImg
           src={
             imgDataCharacters.filter(
               (item) => item.id === characterDetail.id
             )[0].src
           }
           alt="characterImg"
-        />
-        <div>
-          <h2>{characterDetail.name}</h2>
+        ></DetailedPageImg>
+        <div className="pl-50 pt-15">
+          <h1>{characterDetail.name}</h1>
           <h3>Gender : {characterDetail.gender}</h3>
           <h3>Age : {characterDetail.age}</h3>
           <h3>Eye color : {characterDetail.eye_color}</h3>
           <h3>Hair color : {characterDetail.hair_color}</h3>
         </div>
-      </div>
+      </DetailedPageContainer>
 
-      <div>
-        <h3>
-          Species : <RelatedSpecies urlSpecies={characterDetail.species} />
-        </h3>
-      </div>
+      <DetailedPageRelatedContainer>
+        <DetailedPageRelated>
+          <h2>Related Species</h2>
+          <RelatedSpecies urlSpecies={characterDetail.species} />
+        </DetailedPageRelated>
+        <DetailedPageRelated>
+          <h2>Related Film(s)</h2>
+          <div style={{ display: "flex" }}>{relatedFilms}</div>
+        </DetailedPageRelated>
+      </DetailedPageRelatedContainer>
     </div>
   );
 }

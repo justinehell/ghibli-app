@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import RelatedFilms from "./RelatedFilms";
 import RelatedPeople from "./RelatedPeople";
 import imgDataLocations from "./../data/imgDataLocations";
+import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPageContainer";
+import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
+import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
+import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
 
 function Location({ match }) {
-  const [locationDetail, setLocationDetail] = useState({});
+  const [locationDetail, setLocationDetail] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,17 +25,14 @@ function Location({ match }) {
   }, [match.params.id]);
 
   let relatedPeople = [];
-  if (
-    Array.isArray(locationDetail.residents) &&
-    locationDetail.residents.length > 0
-  ) {
+  if (locationDetail !== null) {
     relatedPeople = locationDetail.residents.map((url, index) => (
       <RelatedPeople key={index} urlPeople={url} />
     ));
   }
 
   let relatedFilms = [];
-  if (Array.isArray(locationDetail.films) && locationDetail.films.length) {
+  if (locationDetail !== null) {
     relatedFilms = locationDetail.films.map((url, index) => (
       <RelatedFilms key={index} urlFilm={url} />
     ));
@@ -58,28 +59,32 @@ function Location({ match }) {
         </div>
       </div>
 
-      <div>
-        <img
+      <DetailedPageContainer>
+        <DetailedPageImg
           src={
             imgDataLocations.filter((item) => item.id === locationDetail.id)[0]
               .src
           }
           alt="locationImg"
         />
-        <div>
+        <div className="pl-50 pt-15">
           <h2>{locationDetail.name}</h2>
           <h3>Climate : {locationDetail.climate}</h3>
           <h3>Terrain : {locationDetail.terrain}</h3>
           <h3>Surface water : {locationDetail.surface_water}</h3>
         </div>
-      </div>
+      </DetailedPageContainer>
 
-      <div>
-        <h3>Related Residents : {relatedPeople}</h3>
-      </div>
-      <div>
-        <h3>Related Films : {relatedFilms}</h3>
-      </div>
+      <DetailedPageRelatedContainer>
+        <DetailedPageRelated>
+          <h2>Related Residents</h2>
+          <div style={{ display: "flex" }}>{relatedPeople}</div>
+        </DetailedPageRelated>
+        <DetailedPageRelated>
+          <h2>Related Film(s)</h2>
+          <div style={{ display: "flex" }}>{relatedFilms}</div>
+        </DetailedPageRelated>
+      </DetailedPageRelatedContainer>
     </div>
   );
 }
