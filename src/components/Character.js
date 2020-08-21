@@ -72,7 +72,9 @@ function Character({ match }) {
       <DetailedPageRelatedContainer>
         <DetailedPageRelated>
           <h2>Related Species</h2>
-          <RelatedSpecies urlSpecies={characterDetail.species} />
+          <div style={{ display: "flex" }}>
+            <RelatedSpecies urlSpecies={characterDetail.species} />
+          </div>
         </DetailedPageRelated>
         <DetailedPageRelated>
           <h2>Related Film(s)</h2>

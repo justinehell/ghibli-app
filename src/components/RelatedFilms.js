@@ -28,7 +28,7 @@ const RelatedFilms = (props) => {
     >
       <DetailedPageRelatedImg
         src={imgDataFilms.filter((item) => item.id === relatedFilms.id)[0].src}
-        alt={`avatar of the movie ${relatedFilms.name}`}
+        alt={`avatar of the movie ${relatedFilms.title}`}
       />
       <p>{relatedFilms.title}</p>
     </Link>

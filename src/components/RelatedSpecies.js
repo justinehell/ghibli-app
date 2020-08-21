@@ -26,16 +26,13 @@ const RelatedSpecies = (props) => {
       to={`/species/${relatedSpecies.id}`}
       style={{ width: "80px", paddingRight: "15px", textAlign: "center" }}
     >
-      <div>
-        <DetailedPageRelatedImg
-          src={
-            imgDataSpecies.filter((item) => item.id === relatedSpecies.id)[0]
-              .src
-          }
-          alt={`avatar of the species ${relatedSpecies.name}`}
-        />
-        <p>{relatedSpecies.name}</p>
-      </div>
+      <DetailedPageRelatedImg
+        src={
+          imgDataSpecies.filter((item) => item.id === relatedSpecies.id)[0].src
+        }
+        alt={`avatar of the species ${relatedSpecies.name}`}
+      />
+      <p>{relatedSpecies.name}</p>
     </Link>
   );
 };
