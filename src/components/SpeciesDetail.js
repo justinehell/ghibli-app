@@ -3,10 +3,19 @@ import { Link } from "react-router-dom";
 import RelatedFilms from "./RelatedFilms";
 import RelatedPeople from "./RelatedPeople";
 import imgDataSpecies from "./../data/imgDataSpecies";
+import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPageContainer";
+import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
+import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
+import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
+
+import PaginationNextPrev from "./PaginationNextPrev";
 
 function SpeciesDetail({ match }) {
-  const [speciesDetail, setSpeciesDetail] = useState({});
+  const [speciesDetail, setSpeciesDetail] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentPageRelatedFilms, setCurrentPageRelatedFilms] = useState(1);
+  const [currentPageRelatedPeople, setCurrentPageRelatedPeople] = useState(1);
+  const [elementsPerPage] = useState(4);
 
   useEffect(() => {
     const fetchSpeciesDetail = async () => {
@@ -20,23 +29,59 @@ function SpeciesDetail({ match }) {
     fetchSpeciesDetail();
   }, [match.params]);
 
+  // Change page "Next - Previous"
+  const getPageRelatedFilms = (pageModifyer) => {
+    setCurrentPageRelatedFilms(
+      (prevCurrentPageRelatedFilms) =>
+        prevCurrentPageRelatedFilms + pageModifyer
+    );
+  };
+
+  const getPageRelatedPeople = (pageModifyer) => {
+    setCurrentPageRelatedPeople(
+      (prevCurrentPageRelatedPeople) =>
+        prevCurrentPageRelatedPeople + pageModifyer
+    );
+  };
+
+  let pageNumbersRelatedPeople;
+  let pageNumbersRelatedFilms;
+
   let relatedPeople = [];
-  if (Array.isArray(speciesDetail.people) && speciesDetail.people.length) {
-    relatedPeople = speciesDetail.people.map((url, index) => (
+  if (speciesDetail !== null) {
+    // Get current elements = Character
+    const indexOfLastElement = currentPageRelatedPeople * elementsPerPage;
+    const indexOfFirstElement = indexOfLastElement - elementsPerPage;
+    const currentElements = speciesDetail.people.slice(
+      indexOfFirstElement,
+      indexOfLastElement
+    );
+    // Update number of pages
+    pageNumbersRelatedPeople = Math.ceil(
+      speciesDetail.people.length / elementsPerPage
+    );
+    relatedPeople = currentElements.map((url, index) => (
       <RelatedPeople key={index} urlPeople={url} />
     ));
   }
 
   let relatedFilms = [];
-  if (Array.isArray(speciesDetail.films) && speciesDetail.films.length) {
-    relatedFilms = speciesDetail.films.map((url, index) => (
+  if (speciesDetail !== null) {
+    // Get current elements = film
+    const indexOfLastElement = currentPageRelatedFilms * elementsPerPage;
+    const indexOfFirstElement = indexOfLastElement - elementsPerPage;
+    const currentElements = speciesDetail.films.slice(
+      indexOfFirstElement,
+      indexOfLastElement
+    );
+    // Update number of pages
+    pageNumbersRelatedFilms = Math.ceil(
+      speciesDetail.films.length / elementsPerPage
+    );
+    relatedFilms = currentElements.map((url, index) => (
       <RelatedFilms key={index} urlFilm={url} />
     ));
   }
-
-  let test = imgDataSpecies.filter((item) => item.id === speciesDetail.id);
-  console.log("speciesDetail.id", speciesDetail.id);
-  console.log("test", test);
 
   if (loading) {
     return <h2>Loading...</h2>;
@@ -58,27 +103,41 @@ function SpeciesDetail({ match }) {
         </div>
       </div>
 
-      <div style={{ backgroundColor: "blue" }}>
-        <img
+      <DetailedPageContainer>
+        <DetailedPageImg
           src={
             imgDataSpecies.filter((item) => item.id === speciesDetail.id)[0].src
           }
           alt="speciesImg"
         />
-        <div style={{ backgroundColor: "pink", width: "450px" }}>
-          <h2>{speciesDetail.name}</h2>
+        <div className="pl-50 pt-15">
+          <h1>{speciesDetail.name}</h1>
           <h3>Classification : {speciesDetail.classification}</h3>
           <h3>Eye colors : {speciesDetail.eye_colors}</h3>
           <h3>Hair colors : {speciesDetail.hair_colors}</h3>
         </div>
-      </div>
+      </DetailedPageContainer>
 
-      <div>
-        <h3>Related Characters : {relatedPeople}</h3>
-      </div>
-      <div>
-        <h3>Related Films : {relatedFilms}</h3>
-      </div>
+      <DetailedPageRelatedContainer>
+        <DetailedPageRelated>
+          <h2>Related Characters</h2>
+          <div style={{ display: "flex" }}>{relatedPeople}</div>
+          <PaginationNextPrev
+            currentPage={currentPageRelatedPeople}
+            pageNumbers={pageNumbersRelatedPeople}
+            paginate={getPageRelatedPeople}
+          />
+        </DetailedPageRelated>
+        <DetailedPageRelated>
+          <h2>Related Film(s)</h2>
+          <div style={{ display: "flex" }}>{relatedFilms}</div>
+          <PaginationNextPrev
+            currentPage={currentPageRelatedFilms}
+            pageNumbers={pageNumbersRelatedFilms}
+            paginate={getPageRelatedFilms}
+          />
+        </DetailedPageRelated>
+      </DetailedPageRelatedContainer>
     </div>
   );
 }

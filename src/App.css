@@ -2,9 +2,45 @@
   /* background-color: #282c34; couleur foncé*/
   background-color: ivory;
   min-height: calc(100vh - 254px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   /* display: flex; */
   /* font-size: calc(10px + 2vmin); */
   color: black;
+}
+
+.homeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.homeCard {
+  height: 400px;
+  width: 40%;
+  min-width: 300px;
+  margin: 50px;
+}
+.homeCardHeader {
+  background-color: rgba(50, 50, 50, 0.5);
+  padding: 10px;
+}
+.homeCardTitle {
+  font-size: 28px;
+}
+
+@media screen and (max-width: 1000px) {
+  .homeCard {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .homeCard {
+    margin: 0;
+    width: 100%;
+  }
 }
 
 nav {
