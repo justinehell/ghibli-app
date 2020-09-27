@@ -1,17 +1,18 @@
 import React from "react";
+import Button from "../styledComponents/Button";
 
 const PaginationNextprev = ({ currentPage, pageNumbers, paginate }) => {
   return (
-    <div className="flex">
-      <button disabled={currentPage === 1} onClick={() => paginate(-1)}>
+    <div className="flex center mt-10">
+      <Button disabled={currentPage === 1} onClick={() => paginate(-1)}>
         Prev.
-      </button>
-      <button
+      </Button>
+      <Button
         disabled={currentPage === pageNumbers}
         onClick={() => paginate(1)}
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 };

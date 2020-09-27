@@ -9,12 +9,11 @@ const Pagination = ({ elementsPerPage, totalElements, paginate }) => {
 
   const styledPagination = {
     marginRight: "1.2em",
-    backgroundColor: "black",
-    borderRadius: "15px",
-    padding: "12px",
-    border: "2px solid black",
+    backgroundColor: "white",
+    padding: "8px",
     fontWeight: "600",
-    color: "ivory",
+    height: "100%",
+    alignSelf: "center",
   };
 
   return (

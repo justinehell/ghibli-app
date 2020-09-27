@@ -5,7 +5,7 @@ function Footer() {
     <div
       className="h-100 text-center bg-ivory font-bold"
       style={{
-        padding: "0 20px 20px 20px",
+        padding: "20px",
       }}
     >
       <div className="flex space-around pt-20 pb-20 flex-wrap">

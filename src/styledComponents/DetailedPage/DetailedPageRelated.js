@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 const DetailedPageRelated = styled.div`
-  background-color: black;
-  color: lightskyblue;
-  width: calc(100% / 2);
-  min-height: 244px;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(107 109 120 / 50%);
+  color: lightskyblue; //#87cefa
+  width: calc(97% / 2);
   margin-top: 25px;
   @media screen and (max-width: 899px) {
     width: 100%;

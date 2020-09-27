@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const CardStyle = styled.div`
-  background-color: black;
+  background-color: lightskyblue;
+  color: #282c34;
   padding-bottom: 15px;
 `;
 

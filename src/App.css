@@ -1,6 +1,5 @@
 .App {
-  /* background-color: #282c34; couleur foncé*/
-  background-color: ivory;
+  background-color: #282c34;
   min-height: calc(100vh - 254px);
   display: flex;
   flex-direction: column;
@@ -8,7 +7,7 @@
   justify-content: center;
   /* display: flex; */
   /* font-size: calc(10px + 2vmin); */
-  color: black;
+  color: white;
 }
 
 .homeContainer {
@@ -65,8 +64,8 @@ nav {
 
 button {
   border: none;
-  background-color: ivory;
   cursor: pointer;
+  background-color: #282c34;
 }
 
 a {
@@ -76,6 +75,10 @@ a {
 
 p {
   margin: 0;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }
 
 /* IMAGES STYLES & POSITION */
@@ -92,6 +95,9 @@ p {
 .margin-auto {
   margin: auto;
 }
+.mt-10 {
+  margin-top: 10px;
+}
 .m-150-50-50-0 {
   margin: 150px 50px 50px 0px;
 }
@@ -100,6 +106,9 @@ p {
 }
 .p-15-15-15-50 {
   padding: 15px 15px 15px 50px;
+}
+.p-24 {
+  padding: 24px;
 }
 .pl-50 {
   padding-left: 50px;
@@ -173,6 +182,9 @@ p {
 .white {
   color: white;
 }
+.skyblue {
+  color: lightskyblue;
+}
 .bg-color {
   background-color: rgb(9, 12, 11);
 }
@@ -183,21 +195,11 @@ p {
   background-color: transparent;
 }
 .bg-ivory {
-  background-color: ivory;
-}
-.bg-coral {
-  background-color: lightcoral;
+  background-color: #282c34;
 }
 .bg-blue {
   background-color: lightskyblue;
 }
-.bg-plum {
-  background-color: plum;
-}
-.bg-green {
-  background-color: yellowgreen;
-}
-
 /* POSITION */
 
 .sticky {
@@ -211,6 +213,9 @@ p {
 }
 .space-between {
   justify-content: space-between;
+}
+.center {
+  justify-content: center;
 }
 .align-center {
   align-items: center;
