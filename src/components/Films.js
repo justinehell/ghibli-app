@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import imgDataFilms from "./../data/imgDataFilms";
-import PageContainer from "./../styledComponents/ListOfCharacters/PageContainer";
-import ElementPerPage from "./../styledComponents/ListOfCharacters/ElementPerPage";
-import CardStyle from "./../styledComponents/ListOfCharacters/CardStyle";
-import CardImageStyle from "./../styledComponents/ListOfCharacters/CardImageStyle";
+import PageContainer from "./../styledComponents/ListOfCardsPage/PageContainer";
+import ElementPerPage from "./../styledComponents/ListOfCardsPage/ElementPerPage";
+import CardStyle from "./../styledComponents/ListOfCardsPage/CardStyle";
+import CardImageStyle from "./../styledComponents/ListOfCardsPage/CardImageStyle";
 import NavBar from "./NavBar";
 
 function Films() {
