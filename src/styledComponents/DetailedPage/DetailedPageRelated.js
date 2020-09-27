@@ -3,12 +3,12 @@ import styled from "styled-components";
 const DetailedPageRelated = styled.div`
   background-color: black;
   color: lightskyblue;
-  width: 23.5%;
-  margin-right: 25px;
+  width: calc(100% / 2);
   min-height: 244px;
   margin-top: 25px;
-  border-radius: 15px;
-  padding: 50px;
+  @media screen and (max-width: 899px) {
+    width: 100%;
+  }
 `;
 
 export default DetailedPageRelated;

@@ -6,8 +6,10 @@ const DetailedPageContainer = styled.div`
   color: lightskyblue;
   max-width: 70%;
   margin: auto;
-  border-radius: 15px;
   margin-top: 50px;
+  @media screen and (max-width: 899px) {
+    flex-direction: column;
+  }
 `;
 
 export default DetailedPageContainer;

@@ -30,6 +30,9 @@
   font-size: 28px;
 }
 
+.logo {
+  height: 250px;
+}
 @media screen and (max-width: 1000px) {
   .homeCard {
     width: 70%;
@@ -40,6 +43,13 @@
   .homeCard {
     margin: 0;
     width: 100%;
+  }
+  .logo {
+    height: 150px;
+    margin-bottom: 40px;
+  }
+  .modal {
+    display: none;
   }
 }
 
@@ -153,6 +163,9 @@ p {
 }
 .flex {
   display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 /* COLOR & BACKGROUND COLOR */
