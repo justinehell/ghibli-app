@@ -6,6 +6,7 @@ import PageContainer from "./../styledComponents/ListOfCharacters/PageContainer"
 import ElementPerPage from "./../styledComponents/ListOfCharacters/ElementPerPage";
 import CardStyle from "./../styledComponents/ListOfCharacters/CardStyle";
 import CardImageStyle from "./../styledComponents/ListOfCharacters/CardImageStyle";
+import NavBar from "./NavBar";
 
 function Species() {
   const [species, setSpecies] = useState([]);
@@ -40,21 +41,16 @@ function Species() {
   }
 
   return (
-    <div className="">
+    <div>
       <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>Species</h1>
-        </div>
+        <NavBar category="Species" />
         <Pagination
           elementsPerPage={elementsPerPage}
           totalElements={species.length}
           paginate={paginate}
         />
       </div>
+
       <PageContainer>
         {currentElements.map((eachSpecies) => (
           <ElementPerPage key={eachSpecies.id}>

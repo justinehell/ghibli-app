@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import RelatedFilms from "./RelatedFilms";
 import RelatedPeople from "./RelatedPeople";
 import imgDataSpecies from "./../data/imgDataSpecies";
@@ -8,6 +7,7 @@ import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
 import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
 import DetailedPageDivImg from "../styledComponents/DetailedPage/DetailedPageDivImg";
+import NavBar from "./NavBar";
 
 import PaginationNextPrev from "./PaginationNextPrev";
 
@@ -114,17 +114,11 @@ function SpeciesDetail({ match }) {
   return (
     <>
       <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <Link to="/species">
-            <h1>Species</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>{speciesDetail.name}</h1>
-        </div>
+        <NavBar
+          linkTo="/species"
+          category="Species"
+          title={speciesDetail.name}
+        />
       </div>
 
       <div className="full-width">
@@ -138,7 +132,7 @@ function SpeciesDetail({ match }) {
               alt="speciesImg"
             />
           </DetailedPageDivImg>
-          <div className="pl-50 pt-15">
+          <div className="p-24">
             <h1>{speciesDetail.name}</h1>
             <h3>Classification : {speciesDetail.classification}</h3>
             <h3>Eye colors : {speciesDetail.eye_colors}</h3>

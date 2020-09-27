@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import RelatedFilms from "./RelatedFilms";
 import RelatedPeople from "./RelatedPeople";
 import imgDataLocations from "./../data/imgDataLocations";
@@ -8,7 +7,8 @@ import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
 import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
 import DetailedPageDivImg from "../styledComponents/DetailedPage/DetailedPageDivImg";
-
+import NoData from "../components/NoData";
+import NavBar from "./NavBar";
 import PaginationNextPrev from "./PaginationNextPrev";
 
 function Location({ match }) {
@@ -45,7 +45,7 @@ function Location({ match }) {
     (locationDetail.residents.length === 0 ||
       locationDetail.residents[0] === "TODO")
   ) {
-    relatedPeople = "TODO";
+    relatedPeople = <NoData />;
   } else if (locationDetail !== null && locationDetail.residents.length !== 0) {
     // Get current elements = Character
     const indexOfLastElement = currentPageRelatedPeople * elementsPerPage;
@@ -88,17 +88,11 @@ function Location({ match }) {
   return (
     <>
       <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <Link to="/locations">
-            <h1>Locations</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>{locationDetail.name}</h1>
-        </div>
+        <NavBar
+          linkTo="/locations"
+          category="Locations"
+          title={locationDetail.name}
+        />
       </div>
 
       <div className="full-width">
@@ -113,7 +107,7 @@ function Location({ match }) {
               alt="locationImg"
             />
           </DetailedPageDivImg>
-          <div className="pl-50 pt-15">
+          <div className="p-24">
             <h2>{locationDetail.name}</h2>
             <h3>Climate : {locationDetail.climate}</h3>
             <h3>Terrain : {locationDetail.terrain}</h3>

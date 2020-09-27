@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import RelatedSpecies from "./RelatedSpecies";
 import RelatedFilms from "./RelatedFilms";
 import imgDataCharacters from "./../data/imgDataCharacters";
@@ -8,6 +8,7 @@ import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
 import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
 import DetailedPageDivImg from "../styledComponents/DetailedPage/DetailedPageDivImg";
+import NavBar from "./NavBar";
 
 function Character({ match }) {
   const [characterDetail, setCharacterDetail] = useState(null);
@@ -39,17 +40,11 @@ function Character({ match }) {
   return (
     <>
       <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around letter-spacing-2">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <Link to="/people">
-            <h1>Characters</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>{characterDetail.name}</h1>
-        </div>
+        <NavBar
+          linkTo="/people"
+          category="Characters"
+          title={characterDetail.name}
+        />
       </div>
 
       <div className="full-width">
@@ -64,7 +59,7 @@ function Character({ match }) {
               alt="characterImg"
             ></DetailedPageImg>
           </DetailedPageDivImg>
-          <div className="pl-50 pt-15">
+          <div className="p-24">
             <h1>{characterDetail.name}</h1>
             <h3>Gender : {characterDetail.gender}</h3>
             <h3>Age : {characterDetail.age}</h3>

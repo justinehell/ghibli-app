@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import RelatedSpecies from "./RelatedSpecies";
 import RelatedPeople from "./RelatedPeople";
 import imgDataFilms from "./../data/imgDataFilms";
@@ -8,8 +7,10 @@ import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
 import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
 import DetailedPageDivImg from "../styledComponents/DetailedPage/DetailedPageDivImg";
+import NoData from "../components/NoData";
 
 import PaginationNextPrev from "./PaginationNextPrev";
+import NavBar from "./NavBar";
 
 function Film({ match }) {
   const [filmDetail, setFilmDetail] = useState(null);
@@ -50,7 +51,7 @@ function Film({ match }) {
   let urlRelatedPeopleEmpty = "https://ghibliapi.herokuapp.com/people/";
 
   if (filmDetail !== null && filmDetail.people[0] === urlRelatedPeopleEmpty) {
-    relatedPeople = "TODO";
+    relatedPeople = <NoData />;
   } else if (filmDetail !== null) {
     // Get current elements = Character
     const indexOfLastElement = currentPageRelatedPeople * elementsPerPage;
@@ -67,7 +68,7 @@ function Film({ match }) {
       <RelatedPeople key={index} urlPeople={url} />
     ));
     if (
-      pageNumbersRelatedPeople != undefined ||
+      pageNumbersRelatedPeople !== undefined ||
       pageNumbersRelatedPeople === 1
     ) {
       relatedPagination = (
@@ -89,18 +90,9 @@ function Film({ match }) {
   return (
     <>
       <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <Link to="/films">
-            <h1>Films</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>{filmDetail.title}</h1>
-        </div>
+        <NavBar linkTo="/films" category="Films" title={filmDetail.title} />
       </div>
+
       <div className="full-width">
         <DetailedPageContainer>
           <DetailedPageDivImg>
@@ -111,14 +103,13 @@ function Film({ match }) {
               alt="speciesImg"
             />
           </DetailedPageDivImg>
-          <div className="pl-50 pt-15">
+          <div className="p-24">
             <h2>{filmDetail.title}</h2>
             <h3>Director : {filmDetail.director}</h3>
             <h3>Producer : {filmDetail.producer}</h3>
             <h3>Release date : {filmDetail.release_date}</h3>
             <h3>
               Description : <br />
-              <br />
               {filmDetail.description}
             </h3>
           </div>

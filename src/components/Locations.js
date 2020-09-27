@@ -6,6 +6,7 @@ import PageContainer from "./../styledComponents/ListOfCharacters/PageContainer"
 import ElementPerPage from "./../styledComponents/ListOfCharacters/ElementPerPage";
 import CardStyle from "./../styledComponents/ListOfCharacters/CardStyle";
 import CardImageStyle from "./../styledComponents/ListOfCharacters/CardImageStyle";
+import NavBar from "./NavBar";
 
 function Locations() {
   const [locations, setLocations] = useState([]);
@@ -40,21 +41,16 @@ function Locations() {
   }
 
   return (
-    <div className="">
+    <div>
       <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>Locations</h1>
-        </div>
+        <NavBar category="Locations" />
         <Pagination
           elementsPerPage={elementsPerPage}
           totalElements={locations.length}
           paginate={paginate}
         />
       </div>
+
       <PageContainer>
         {currentElements.map((location) => (
           <ElementPerPage key={location.id}>
