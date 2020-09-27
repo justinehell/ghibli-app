@@ -7,6 +7,7 @@ import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPage
 import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
 import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
+import DetailedPageDivImg from "../styledComponents/DetailedPage/DetailedPageDivImg";
 
 import PaginationNextPrev from "./PaginationNextPrev";
 
@@ -30,13 +31,6 @@ function SpeciesDetail({ match }) {
   }, [match.params]);
 
   // Change page "Next - Previous"
-  const getPageRelatedFilms = (pageModifyer) => {
-    setCurrentPageRelatedFilms(
-      (prevCurrentPageRelatedFilms) =>
-        prevCurrentPageRelatedFilms + pageModifyer
-    );
-  };
-
   const getPageRelatedPeople = (pageModifyer) => {
     setCurrentPageRelatedPeople(
       (prevCurrentPageRelatedPeople) =>
@@ -44,9 +38,8 @@ function SpeciesDetail({ match }) {
     );
   };
 
+  let paginationRelatedPeople;
   let pageNumbersRelatedPeople;
-  let pageNumbersRelatedFilms;
-
   let relatedPeople = [];
   if (speciesDetail !== null) {
     // Get current elements = Character
@@ -63,8 +56,28 @@ function SpeciesDetail({ match }) {
     relatedPeople = currentElements.map((url, index) => (
       <RelatedPeople key={index} urlPeople={url} />
     ));
+    if (pageNumbersRelatedPeople > 1) {
+      paginationRelatedPeople = (
+        <PaginationNextPrev
+          currentPage={currentPageRelatedPeople}
+          pageNumbers={pageNumbersRelatedPeople}
+          paginate={getPageRelatedPeople}
+        />
+      );
+    } else {
+      paginationRelatedPeople = null;
+    }
   }
 
+  const getPageRelatedFilms = (pageModifyer) => {
+    setCurrentPageRelatedFilms(
+      (prevCurrentPageRelatedFilms) =>
+        prevCurrentPageRelatedFilms + pageModifyer
+    );
+  };
+
+  let paginationRelatedFilms;
+  let pageNumbersRelatedFilms;
   let relatedFilms = [];
   if (speciesDetail !== null) {
     // Get current elements = film
@@ -81,6 +94,17 @@ function SpeciesDetail({ match }) {
     relatedFilms = currentElements.map((url, index) => (
       <RelatedFilms key={index} urlFilm={url} />
     ));
+    if (pageNumbersRelatedFilms > 1) {
+      paginationRelatedFilms = (
+        <PaginationNextPrev
+          currentPage={currentPageRelatedFilms}
+          pageNumbers={pageNumbersRelatedFilms}
+          paginate={getPageRelatedFilms}
+        />
+      );
+    } else {
+      paginationRelatedFilms = null;
+    }
   }
 
   if (loading) {
@@ -88,7 +112,7 @@ function SpeciesDetail({ match }) {
   }
 
   return (
-    <div>
+    <>
       <div className="margin-auto width-80 flex space-between items-center">
         <div className="flex space-around">
           <Link to="/">
@@ -103,42 +127,39 @@ function SpeciesDetail({ match }) {
         </div>
       </div>
 
-      <DetailedPageContainer>
-        <DetailedPageImg
-          src={
-            imgDataSpecies.filter((item) => item.id === speciesDetail.id)[0].src
-          }
-          alt="speciesImg"
-        />
-        <div className="pl-50 pt-15">
-          <h1>{speciesDetail.name}</h1>
-          <h3>Classification : {speciesDetail.classification}</h3>
-          <h3>Eye colors : {speciesDetail.eye_colors}</h3>
-          <h3>Hair colors : {speciesDetail.hair_colors}</h3>
-        </div>
-      </DetailedPageContainer>
+      <div className="full-width">
+        <DetailedPageContainer>
+          <DetailedPageDivImg>
+            <DetailedPageImg
+              src={
+                imgDataSpecies.filter((item) => item.id === speciesDetail.id)[0]
+                  .src
+              }
+              alt="speciesImg"
+            />
+          </DetailedPageDivImg>
+          <div className="pl-50 pt-15">
+            <h1>{speciesDetail.name}</h1>
+            <h3>Classification : {speciesDetail.classification}</h3>
+            <h3>Eye colors : {speciesDetail.eye_colors}</h3>
+            <h3>Hair colors : {speciesDetail.hair_colors}</h3>
+          </div>
+        </DetailedPageContainer>
 
-      <DetailedPageRelatedContainer>
-        <DetailedPageRelated>
-          <h2>Related Characters</h2>
-          <div style={{ display: "flex" }}>{relatedPeople}</div>
-          <PaginationNextPrev
-            currentPage={currentPageRelatedPeople}
-            pageNumbers={pageNumbersRelatedPeople}
-            paginate={getPageRelatedPeople}
-          />
-        </DetailedPageRelated>
-        <DetailedPageRelated>
-          <h2>Related Film(s)</h2>
-          <div style={{ display: "flex" }}>{relatedFilms}</div>
-          <PaginationNextPrev
-            currentPage={currentPageRelatedFilms}
-            pageNumbers={pageNumbersRelatedFilms}
-            paginate={getPageRelatedFilms}
-          />
-        </DetailedPageRelated>
-      </DetailedPageRelatedContainer>
-    </div>
+        <DetailedPageRelatedContainer>
+          <DetailedPageRelated>
+            <h2>Related Characters</h2>
+            <div className="flex">{relatedPeople}</div>
+            {paginationRelatedPeople}
+          </DetailedPageRelated>
+          <DetailedPageRelated>
+            <h2>Related Film(s)</h2>
+            <div className="flex">{relatedFilms}</div>
+            {paginationRelatedFilms}
+          </DetailedPageRelated>
+        </DetailedPageRelatedContainer>
+      </div>
+    </>
   );
 }
 

@@ -7,6 +7,7 @@ import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPage
 import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
 import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
+import DetailedPageDivImg from "../styledComponents/DetailedPage/DetailedPageDivImg";
 
 function Character({ match }) {
   const [characterDetail, setCharacterDetail] = useState(null);
@@ -36,7 +37,7 @@ function Character({ match }) {
   }
 
   return (
-    <div>
+    <>
       <div className="margin-auto width-80 flex space-between items-center">
         <div className="flex space-around letter-spacing-2">
           <Link to="/">
@@ -51,37 +52,41 @@ function Character({ match }) {
         </div>
       </div>
 
-      <DetailedPageContainer>
-        <DetailedPageImg
-          src={
-            imgDataCharacters.filter(
-              (item) => item.id === characterDetail.id
-            )[0].src
-          }
-          alt="characterImg"
-        ></DetailedPageImg>
-        <div className="pl-50 pt-15">
-          <h1>{characterDetail.name}</h1>
-          <h3>Gender : {characterDetail.gender}</h3>
-          <h3>Age : {characterDetail.age}</h3>
-          <h3>Eye color : {characterDetail.eye_color}</h3>
-          <h3>Hair color : {characterDetail.hair_color}</h3>
-        </div>
-      </DetailedPageContainer>
-
-      <DetailedPageRelatedContainer>
-        <DetailedPageRelated>
-          <h2>Related Species</h2>
-          <div style={{ display: "flex" }}>
-            <RelatedSpecies urlSpecies={characterDetail.species} />
+      <div className="full-width">
+        <DetailedPageContainer>
+          <DetailedPageDivImg>
+            <DetailedPageImg
+              src={
+                imgDataCharacters.filter(
+                  (item) => item.id === characterDetail.id
+                )[0].src
+              }
+              alt="characterImg"
+            ></DetailedPageImg>
+          </DetailedPageDivImg>
+          <div className="pl-50 pt-15">
+            <h1>{characterDetail.name}</h1>
+            <h3>Gender : {characterDetail.gender}</h3>
+            <h3>Age : {characterDetail.age}</h3>
+            <h3>Eye color : {characterDetail.eye_color}</h3>
+            <h3>Hair color : {characterDetail.hair_color}</h3>
           </div>
-        </DetailedPageRelated>
-        <DetailedPageRelated>
-          <h2>Related Film(s)</h2>
-          <div style={{ display: "flex" }}>{relatedFilms}</div>
-        </DetailedPageRelated>
-      </DetailedPageRelatedContainer>
-    </div>
+        </DetailedPageContainer>
+
+        <DetailedPageRelatedContainer>
+          <DetailedPageRelated>
+            <h2>Related Species</h2>
+            <div className="flex">
+              <RelatedSpecies urlSpecies={characterDetail.species} />
+            </div>
+          </DetailedPageRelated>
+          <DetailedPageRelated>
+            <h2>Related Film(s)</h2>
+            <div className="flex">{relatedFilms}</div>
+          </DetailedPageRelated>
+        </DetailedPageRelatedContainer>
+      </div>
+    </>
   );
 }
 
