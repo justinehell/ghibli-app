@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <div
-      className="h-100 text-center bg-ivory font-bold"
+      className="min-width text-center bg-ivory font-bold"
       style={{
         padding: "20px",
       }}

@@ -10,7 +10,7 @@ function Header() {
   };
 
   return (
-    <nav className="min-height-10vh bg-ivory">
+    <nav className="min-width min-height-10vh bg-ivory">
       <div className="help">
         <button onClick={() => handleClickOpen()}>
           <i className="fas fa-question-circle fa-3x modal white"></i>

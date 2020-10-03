@@ -10,6 +10,9 @@ const DetailedPageContainer = styled.div`
   @media screen and (max-width: 899px) {
     flex-direction: column;
   }
+  @media screen and (max-width: 415px) {
+    max-width: 100%;
+  }
 `;
 
 export default DetailedPageContainer;

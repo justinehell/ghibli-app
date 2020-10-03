@@ -7,7 +7,11 @@ const PageContainer = styled.div`
   margin-right: 10%;
   margin-left: 10%;
   justify-content: center;
-  padding: 50px 0;
+  //padding: 50px 0;
+  @media screen and (max-width: 415px) {
+    margin-right: 0;
+    margin-left: 0;
+  }
 `;
 
 export default PageContainer;

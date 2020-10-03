@@ -8,6 +8,7 @@
   /* display: flex; */
   /* font-size: calc(10px + 2vmin); */
   color: white;
+  min-width: 320px;
 }
 
 .homeContainer {
@@ -149,6 +150,9 @@ p {
 }
 .half-width {
   width: 50%;
+}
+.min-width {
+  min-width: 320px;
 }
 .min-height-10vh {
   min-height: 10vh;
