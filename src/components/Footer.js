@@ -8,7 +8,7 @@ function Footer() {
         padding: "20px",
       }}
     >
-      <div className="flex space-around pt-20 pb-20 flex-wrap">
+      <div className="flex space-around pt-20 pb-20 flex-wrap white">
         <div>
           FOLLOW ME :{" "}
           <a href="https://www.linkedin.com/in/justinehell/" target=" _blank">
@@ -30,7 +30,7 @@ function Footer() {
           </a>
         </div>
       </div>
-      <div className="font-small">
+      <div className="font-small white">
         Studio Ghibli and all associated names and/or images are copyright
         Studio Ghibli. Images were freely collected from{" "}
         <a

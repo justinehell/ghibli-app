@@ -5,6 +5,7 @@ const CardImageStyle = styled.img`
   height: 350px;
   object-fit: cover;
   padding-bottom: 10px;
+  border-radius: 8px;
 `;
 
 export default CardImageStyle;
