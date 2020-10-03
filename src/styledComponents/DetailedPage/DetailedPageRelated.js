@@ -1,14 +1,18 @@
 import styled from "styled-components";
 
 const DetailedPageRelated = styled.div`
-  background-color: black;
-  color: lightskyblue;
-  width: 23.5%;
-  margin-right: 25px;
-  min-height: 244px;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(107 109 120 / 50%);
+  color: lightskyblue; //#87cefa
+  width: calc(97% / 2);
   margin-top: 25px;
-  border-radius: 15px;
-  padding: 50px;
+  @media screen and (max-width: 899px) {
+    width: 100%;
+  }
 `;
 
 export default DetailedPageRelated;

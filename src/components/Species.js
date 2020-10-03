@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import imgDataSpecies from "./../data/imgDataSpecies";
-import PageContainer from "./../styledComponents/ListOfCharacters/PageContainer";
-import ElementPerPage from "./../styledComponents/ListOfCharacters/ElementPerPage";
-import CardStyle from "./../styledComponents/ListOfCharacters/CardStyle";
-import CardImageStyle from "./../styledComponents/ListOfCharacters/CardImageStyle";
+import PageContainer from "./../styledComponents/ListOfCardsPage/PageContainer";
+import ElementPerPage from "./../styledComponents/ListOfCardsPage/ElementPerPage";
+import CardStyle from "./../styledComponents/ListOfCardsPage/CardStyle";
+import CardImageStyle from "./../styledComponents/ListOfCardsPage/CardImageStyle";
+import NavBar from "./NavBar";
+import NavStyle from "../styledComponents/NavStyle";
 
 function Species() {
   const [species, setSpecies] = useState([]);
@@ -40,21 +42,16 @@ function Species() {
   }
 
   return (
-    <div className="">
-      <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>Species</h1>
-        </div>
+    <div>
+      <NavStyle>
+        <NavBar category="Species" />
         <Pagination
           elementsPerPage={elementsPerPage}
           totalElements={species.length}
           paginate={paginate}
         />
-      </div>
+      </NavStyle>
+
       <PageContainer>
         {currentElements.map((eachSpecies) => (
           <ElementPerPage key={eachSpecies.id}>

@@ -10,17 +10,17 @@ function Header() {
   };
 
   return (
-    <nav className="min-height-10vh bg-ivory">
+    <nav className="min-width min-height-10vh bg-ivory">
       <div className="help">
         <button onClick={() => handleClickOpen()}>
-          <i className="fas fa-question-circle fa-3x"></i>
+          <i className="fas fa-question-circle fa-3x modal white"></i>
         </button>
       </div>
       <div>
         {isClicked ? <Dialog onClose={() => setIsClicked(false)} /> : ""}
       </div>
       <div className="text-center">
-        <img className="h-250" src={Logo} alt="logo studio Ghibli"></img>
+        <img className="logo" src={Logo} alt="logo studio Ghibli"></img>
       </div>
     </nav>
   );

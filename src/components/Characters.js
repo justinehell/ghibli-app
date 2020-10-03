@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import imgDataCharacters from "./../data/imgDataCharacters";
-import PageContainer from "../styledComponents/ListOfCharacters/PageContainer";
-import ElementPerPage from "../styledComponents/ListOfCharacters/ElementPerPage";
-import CardStyle from "../styledComponents/ListOfCharacters/CardStyle";
-import CardImageStyle from "../styledComponents/ListOfCharacters/CardImageStyle";
+import PageContainer from "../styledComponents/ListOfCardsPage/PageContainer";
+import ElementPerPage from "../styledComponents/ListOfCardsPage/ElementPerPage";
+import CardStyle from "../styledComponents/ListOfCardsPage/CardStyle";
+import CardImageStyle from "../styledComponents/ListOfCardsPage/CardImageStyle";
+import NavBar from "./NavBar";
+import NavStyle from "../styledComponents/NavStyle";
 
 function Characters() {
   const [characters, setCharacters] = useState([]);
@@ -40,21 +42,17 @@ function Characters() {
   }
 
   return (
-    <div className="">
-      <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>Characters</h1>
-        </div>
+    <div>
+      <NavStyle>
+        <NavBar category="Characters" />
+
         <Pagination
           elementsPerPage={elementsPerPage}
           totalElements={characters.length}
           paginate={paginate}
         />
-      </div>
+      </NavStyle>
+
       <PageContainer>
         {currentElements.map((character) => (
           <ElementPerPage key={character.id}>

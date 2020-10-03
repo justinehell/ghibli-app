@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import RelatedSpecies from "./RelatedSpecies";
 import RelatedFilms from "./RelatedFilms";
 import imgDataCharacters from "./../data/imgDataCharacters";
@@ -7,6 +7,8 @@ import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPage
 import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
 import DetailedPageRelatedContainer from "../styledComponents/DetailedPage/DetailedPageRelatedContainer";
+import DetailedPageDivImg from "../styledComponents/DetailedPage/DetailedPageDivImg";
+import NavBar from "./NavBar";
 
 function Character({ match }) {
   const [characterDetail, setCharacterDetail] = useState(null);
@@ -36,50 +38,50 @@ function Character({ match }) {
   }
 
   return (
-    <div>
+    <>
       <div className="margin-auto width-80 flex space-between items-center">
-        <div className="flex space-around letter-spacing-2">
-          <Link to="/">
-            <h1>Home</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <Link to="/people">
-            <h1>Characters</h1>
-          </Link>
-          <h1>&nbsp;/&nbsp;</h1>
-          <h1>{characterDetail.name}</h1>
-        </div>
+        <NavBar
+          linkTo="/people"
+          category="Characters"
+          title={characterDetail.name}
+        />
       </div>
 
-      <DetailedPageContainer>
-        <DetailedPageImg
-          src={
-            imgDataCharacters.filter(
-              (item) => item.id === characterDetail.id
-            )[0].src
-          }
-          alt="characterImg"
-        ></DetailedPageImg>
-        <div className="pl-50 pt-15">
-          <h1>{characterDetail.name}</h1>
-          <h3>Gender : {characterDetail.gender}</h3>
-          <h3>Age : {characterDetail.age}</h3>
-          <h3>Eye color : {characterDetail.eye_color}</h3>
-          <h3>Hair color : {characterDetail.hair_color}</h3>
-        </div>
-      </DetailedPageContainer>
+      <div className="full-width">
+        <DetailedPageContainer>
+          <DetailedPageDivImg>
+            <DetailedPageImg
+              src={
+                imgDataCharacters.filter(
+                  (item) => item.id === characterDetail.id
+                )[0].src
+              }
+              alt="characterImg"
+            ></DetailedPageImg>
+          </DetailedPageDivImg>
+          <div className="p-24">
+            <h1>{characterDetail.name}</h1>
+            <h3>Gender : {characterDetail.gender}</h3>
+            <h3>Age : {characterDetail.age}</h3>
+            <h3>Eye color : {characterDetail.eye_color}</h3>
+            <h3>Hair color : {characterDetail.hair_color}</h3>
+          </div>
+        </DetailedPageContainer>
 
-      <DetailedPageRelatedContainer>
-        <DetailedPageRelated>
-          <h2>Related Species</h2>
-          <RelatedSpecies urlSpecies={characterDetail.species} />
-        </DetailedPageRelated>
-        <DetailedPageRelated>
-          <h2>Related Film(s)</h2>
-          <div style={{ display: "flex" }}>{relatedFilms}</div>
-        </DetailedPageRelated>
-      </DetailedPageRelatedContainer>
-    </div>
+        <DetailedPageRelatedContainer>
+          <DetailedPageRelated>
+            <h2>Related Species</h2>
+            <div className="flex">
+              <RelatedSpecies urlSpecies={characterDetail.species} />
+            </div>
+          </DetailedPageRelated>
+          <DetailedPageRelated>
+            <h2>Related Film(s)</h2>
+            <div className="flex">{relatedFilms}</div>
+          </DetailedPageRelated>
+        </DetailedPageRelatedContainer>
+      </div>
+    </>
   );
 }
 
