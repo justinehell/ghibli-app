@@ -4,6 +4,7 @@ import FilmsCategory from "./../images/categories/films.jpg";
 import LocationsCategory from "./../images/categories/locations.jpg";
 import SpeciesCategory from "./../images/categories/species2.jpg";
 import HomeCards from "./HomeCards";
+import { Link } from "react-router-dom";
 
 function Home() {
   let categories = [
@@ -32,16 +33,29 @@ function Home() {
       pathLink: "/species",
     },
   ];
+  const linkStyle = {
+    color: "white",
+    textDecoration: "none",
+    display: "block",
+    height: "100%",
+    width: "100%",
+  };
 
   return (
     <div className="homeContainer">
       {categories.map((cat) => (
-        <HomeCards
+        <div
           key={cat.id}
-          categoryImg={cat.categoryImg}
-          categoryName={cat.categoryName}
-          pathLink={cat.pathLink}
-        />
+          className="homeCard"
+          style={{
+            backgroundImage: `url(${cat.categoryImg})`,
+            backgroundSize: "cover",
+          }}
+        >
+          <Link to={cat.pathLink} style={linkStyle}>
+            <HomeCards categoryName={cat.categoryName} />
+          </Link>
+        </div>
       ))}
     </div>
   );
