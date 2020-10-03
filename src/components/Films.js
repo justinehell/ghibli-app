@@ -7,6 +7,7 @@ import ElementPerPage from "./../styledComponents/ListOfCardsPage/ElementPerPage
 import CardStyle from "./../styledComponents/ListOfCardsPage/CardStyle";
 import CardImageStyle from "./../styledComponents/ListOfCardsPage/CardImageStyle";
 import NavBar from "./NavBar";
+import NavStyle from "../styledComponents/NavStyle";
 
 function Films() {
   const [films, setFilms] = useState([]);
@@ -39,14 +40,14 @@ function Films() {
 
   return (
     <div>
-      <div className="margin-auto width-80 flex space-between items-center">
+      <NavStyle>
         <NavBar category="Films" />
         <Pagination
           elementsPerPage={elementsPerPage}
           totalElements={films.length}
           paginate={paginate}
         />
-      </div>
+      </NavStyle>
 
       <PageContainer>
         {currentElements.map((film) => (

@@ -7,6 +7,7 @@ import ElementPerPage from "./../styledComponents/ListOfCardsPage/ElementPerPage
 import CardStyle from "./../styledComponents/ListOfCardsPage/CardStyle";
 import CardImageStyle from "./../styledComponents/ListOfCardsPage/CardImageStyle";
 import NavBar from "./NavBar";
+import NavStyle from "../styledComponents/NavStyle";
 
 function Locations() {
   const [locations, setLocations] = useState([]);
@@ -42,14 +43,14 @@ function Locations() {
 
   return (
     <div>
-      <div className="margin-auto width-80 flex space-between items-center">
+      <NavStyle>
         <NavBar category="Locations" />
         <Pagination
           elementsPerPage={elementsPerPage}
           totalElements={locations.length}
           paginate={paginate}
         />
-      </div>
+      </NavStyle>
 
       <PageContainer>
         {currentElements.map((location) => (
