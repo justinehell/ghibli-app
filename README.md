@@ -10,7 +10,7 @@ I had fun building this app, it helped me practice and learn how `ReactJS` works
 
 This app utilizes the [Ghibli API](https://ghibliapi.herokuapp.com/), so the unkown information displayed as "No data" in this app will be updated as the API is updated. As for the pictures, they were freely collected from Ghibli Wiki. Studio Ghibli and all associated names and/or images are copyright Studio Ghibli.
 
-### Notice a bug or have improvment ideas?
+## Notice a bug or have improvment ideas?
 
 Please, if you notice something weird with the website, let me know by sending an email at hell.justine@gmail.com. 
 The same goes for site improvements and/or ideas. This app was greatly inspired by the "Star Wars - A visual Guide" website created by TIM SARVEY. 
