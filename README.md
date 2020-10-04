@@ -8,10 +8,6 @@ I had fun building this app, it helped me practice and learn how `ReactJS` works
 
 ## Where does the information come from?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
 This app utilizes the [Ghibli API](https://ghibliapi.herokuapp.com/), so the unkown information displayed as "No data" in this app will be updated as the API is updated. As for the pictures, they were freely collected from Ghibli Wiki. Studio Ghibli and all associated names and/or images are copyright Studio Ghibli.
 
 ### Notice a bug or have improvment ideas?
