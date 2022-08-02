@@ -57,7 +57,7 @@ function Films() {
               <CardStyle>
                 <CardImageStyle
                   src={findImageById(imgDataFilms, film.id)}
-                  alt="filmImg"
+                  alt={film.title}
                 ></CardImageStyle>
                 <span>{film.title}</span>
               </CardStyle>

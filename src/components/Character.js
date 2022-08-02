@@ -53,7 +53,7 @@ function Character({ match }) {
           <DetailedPageDivImg>
             <DetailedPageImg
               src={findImageById(imgDataCharacters, characterDetail.id)}
-              alt="characterImg"
+              alt={characterDetail.name}
             ></DetailedPageImg>
           </DetailedPageDivImg>
           <div className="p-24">

@@ -99,7 +99,7 @@ function Film({ match }) {
           <DetailedPageDivImg>
             <DetailedPageImg
               src={findImageById(imgDataFilms, filmDetail.id)}
-              alt="speciesImg"
+              alt={filmDetail.title}
             />
           </DetailedPageDivImg>
           <div className="p-24">

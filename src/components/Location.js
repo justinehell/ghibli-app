@@ -101,7 +101,7 @@ function Location({ match }) {
           <DetailedPageDivImg>
             <DetailedPageImg
               src={findImageById(imgDataLocations, locationDetail.id)}
-              alt="locationImg"
+              alt={locationDetail.name}
             />
           </DetailedPageDivImg>
           <div className="p-24">

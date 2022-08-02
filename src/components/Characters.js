@@ -61,7 +61,7 @@ function Characters() {
               <CardStyle>
                 <CardImageStyle
                   src={findImageById(imgDataCharacters, character.id)}
-                  alt="characterImg"
+                  alt={character.name}
                 ></CardImageStyle>
                 <span>{character.name}</span>
               </CardStyle>

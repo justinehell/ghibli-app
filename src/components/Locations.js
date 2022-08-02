@@ -60,7 +60,7 @@ function Locations() {
               <CardStyle>
                 <CardImageStyle
                   src={findImageById(imgDataLocations, location.id)}
-                  alt="locationImg"
+                  alt={location.name}
                 ></CardImageStyle>
                 <span>{location.name}</span>
               </CardStyle>

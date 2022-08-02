@@ -60,7 +60,7 @@ function Species() {
               <CardStyle>
                 <CardImageStyle
                   src={findImageById(imgDataSpecies, eachSpecies.id)}
-                  alt="speciesImg"
+                  alt={eachSpecies.name}
                 ></CardImageStyle>
                 <span>{eachSpecies.name}</span>
               </CardStyle>

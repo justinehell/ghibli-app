@@ -127,7 +127,7 @@ function SpeciesDetail({ match }) {
           <DetailedPageDivImg>
             <DetailedPageImg
               src={findImageById(imgDataSpecies, speciesDetail.id)}
-              alt="speciesImg"
+              alt={speciesDetail.name}
             />
           </DetailedPageDivImg>
           <div className="p-24">
