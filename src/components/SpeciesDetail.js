@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import RelatedFilms from "./RelatedFilms";
 import RelatedPeople from "./RelatedPeople";
 import imgDataSpecies from "./../data/imgDataSpecies";
+import findImageById from "../findImageById";
 import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPageContainer";
 import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
@@ -125,10 +126,7 @@ function SpeciesDetail({ match }) {
         <DetailedPageContainer>
           <DetailedPageDivImg>
             <DetailedPageImg
-              src={
-                imgDataSpecies.filter((item) => item.id === speciesDetail.id)[0]
-                  .src
-              }
+              src={findImageById(imgDataSpecies, speciesDetail.id)}
               alt="speciesImg"
             />
           </DetailedPageDivImg>

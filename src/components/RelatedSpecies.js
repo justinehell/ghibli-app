@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imgDataSpecies from "./../data/imgDataSpecies.json";
+import findImageById from "../findImageById";
 import DetailedPageRelatedImg from "./../styledComponents/DetailedPage/DetailedPageRelatedImg";
 
 const RelatedSpecies = (props) => {
@@ -27,9 +28,7 @@ const RelatedSpecies = (props) => {
       style={{ width: "80px", paddingRight: "15px", textAlign: "center" }}
     >
       <DetailedPageRelatedImg
-        src={
-          imgDataSpecies.filter((item) => item.id === relatedSpecies.id)[0].src
-        }
+        src={findImageById(imgDataSpecies, relatedSpecies.id)}
         alt={`avatar of the species ${relatedSpecies.name}`}
       />
       <p>{relatedSpecies.name}</p>

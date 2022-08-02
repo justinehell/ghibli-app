@@ -34,5 +34,11 @@
     "name": "Totoro",
     "src": "./../images/species/Totoro.jpg",
     "url": "https://ghibliapi.herokuapp.com/species/74b7f547-1577-4430-806c-c358c8b6bcf5"
+  },
+  {
+    "id": "e2cfaa78-fb19-11eb-9a03-0242ac130003",
+    "name": "Dragon",
+    "src": "./../images/species/dragon.jpeg",
+    "url": "https://ghibliapi.herokuapp.com/species/e2cfaa78-fb19-11eb-9a03-0242ac130003"
   }
 ]

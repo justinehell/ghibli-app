@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imgDataFilms from "./../data/imgDataFilms.json";
+import findImageById from "../findImageById";
 import DetailedPageRelatedImg from "./../styledComponents/DetailedPage/DetailedPageRelatedImg";
 
 const RelatedFilms = (props) => {
@@ -27,7 +28,7 @@ const RelatedFilms = (props) => {
       style={{ width: "80px", paddingRight: "15px", textAlign: "center" }}
     >
       <DetailedPageRelatedImg
-        src={imgDataFilms.filter((item) => item.id === relatedFilms.id)[0].src}
+        src={findImageById(imgDataFilms, relatedFilms.id)}
         alt={`avatar of the movie ${relatedFilms.title}`}
       />
       <p>{relatedFilms.title}</p>

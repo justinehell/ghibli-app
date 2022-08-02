@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import RelatedFilms from "./RelatedFilms";
 import RelatedPeople from "./RelatedPeople";
 import imgDataLocations from "./../data/imgDataLocations";
+import findImageById from "../findImageById";
 import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPageContainer";
 import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
@@ -99,11 +100,7 @@ function Location({ match }) {
         <DetailedPageContainer>
           <DetailedPageDivImg>
             <DetailedPageImg
-              src={
-                imgDataLocations.filter(
-                  (item) => item.id === locationDetail.id
-                )[0].src
-              }
+              src={findImageById(imgDataLocations, locationDetail.id)}
               alt="locationImg"
             />
           </DetailedPageDivImg>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import imgDataFilms from "./../data/imgDataFilms";
+import findImageById from "../findImageById";
 import PageContainer from "./../styledComponents/ListOfCardsPage/PageContainer";
 import ElementPerPage from "./../styledComponents/ListOfCardsPage/ElementPerPage";
 import CardStyle from "./../styledComponents/ListOfCardsPage/CardStyle";
@@ -55,9 +56,7 @@ function Films() {
             <Link to={`/films/${film.id}`}>
               <CardStyle>
                 <CardImageStyle
-                  src={
-                    imgDataFilms.filter((item) => item.id === film.id)[0].src
-                  }
+                  src={findImageById(imgDataFilms, film.id)}
                   alt="filmImg"
                 ></CardImageStyle>
                 <span>{film.title}</span>

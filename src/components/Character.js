@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import RelatedSpecies from "./RelatedSpecies";
 import RelatedFilms from "./RelatedFilms";
 import imgDataCharacters from "./../data/imgDataCharacters";
+import findImageById from "../findImageById";
 import DetailedPageContainer from "../styledComponents/DetailedPage/DetailedPageContainer";
 import DetailedPageImg from "../styledComponents/DetailedPage/DetailedPageImg";
 import DetailedPageRelated from "../styledComponents/DetailedPage/DetailedPageRelated";
@@ -51,11 +52,7 @@ function Character({ match }) {
         <DetailedPageContainer>
           <DetailedPageDivImg>
             <DetailedPageImg
-              src={
-                imgDataCharacters.filter(
-                  (item) => item.id === characterDetail.id
-                )[0].src
-              }
+              src={findImageById(imgDataCharacters, characterDetail.id)}
               alt="characterImg"
             ></DetailedPageImg>
           </DetailedPageDivImg>

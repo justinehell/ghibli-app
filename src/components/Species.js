@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import imgDataSpecies from "./../data/imgDataSpecies";
+import findImageById from "../findImageById";
 import PageContainer from "./../styledComponents/ListOfCardsPage/PageContainer";
 import ElementPerPage from "./../styledComponents/ListOfCardsPage/ElementPerPage";
 import CardStyle from "./../styledComponents/ListOfCardsPage/CardStyle";
@@ -58,11 +59,7 @@ function Species() {
             <Link to={`/species/${eachSpecies.id}`}>
               <CardStyle>
                 <CardImageStyle
-                  src={
-                    imgDataSpecies.filter(
-                      (item) => item.id === eachSpecies.id
-                    )[0].src
-                  }
+                  src={findImageById(imgDataSpecies, eachSpecies.id)}
                   alt="speciesImg"
                 ></CardImageStyle>
                 <span>{eachSpecies.name}</span>
